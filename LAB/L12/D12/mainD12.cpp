@@ -44,7 +44,6 @@ int main() {
 
         cout<<"Coordinates after turning:"<< endl;
         treug.turnTriangle();
-        treug.printTriangle();
 
     }
     else cout<<"This is not a right triangle"<<endl;
