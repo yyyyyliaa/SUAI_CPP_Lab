@@ -54,6 +54,10 @@ void SquareTriangle::definitionCoord(int& indexVert, int& indexHeight, int& inde
     }
 }
 
+int len(int index, int* coordX, int* coordY){
+    return sqrt(pow(coordX[index] - coordX[index], 2) + pow(coordY[index] - coordY[index], 2));
+}
+
 double SquareTriangle::square(){
     int indexVert;
     int indexHeight;
@@ -67,6 +71,8 @@ double SquareTriangle::square(){
     return lenHeight*lenBase*0.5;
 
 }
+
+
 
 
 void mySort(int *array, int size){

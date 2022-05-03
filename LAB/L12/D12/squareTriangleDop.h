@@ -3,9 +3,8 @@
 class SquareTriangle {
 
 private:
-    double p_coordX[3];
-    double p_coordY[3];    
-      
+    int p_coordX[3];
+    int p_coordY[3];    
 
 public:
     SquareTriangle();
@@ -21,5 +20,22 @@ public:
     int rightTriangle();
 
     void printTriangle(); //const;
+
+};
+
+class Rectangle{
+
+private:
+    int p_coordX[4];
+    int p_coordY[4];
+
+public:
+    Rectangle();
+
+    Rectangle(int* coordX, int* coordY);
+
+    void setRectangle(int* coordX, int* coordY);
+
+    void printRectangle(); //const;
 
 };
