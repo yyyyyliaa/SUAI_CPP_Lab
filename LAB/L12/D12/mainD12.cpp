@@ -16,6 +16,9 @@ int main() {
     double coordX1[3];
     double coordY1[3];
 
+    int coordXRec[4];
+    int coordYRec[4];
+
     for (int i = 0; i <= 2; i++){
             cout<<"Enter coordinate x" << i << ":";
             cin >> coordX[i];

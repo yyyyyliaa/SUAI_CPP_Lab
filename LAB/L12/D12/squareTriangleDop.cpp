@@ -72,7 +72,10 @@ double SquareTriangle::square(){
 
 }
 
+int SquareTriangle::function(){
 
+
+}
 
 
 void mySort(int *array, int size){
