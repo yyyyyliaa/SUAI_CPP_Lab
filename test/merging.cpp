@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 int main()
 {
@@ -39,9 +40,15 @@ int main()
         check++;
 
     if (check==2){
-        for(int i = 0; i<4; i++){
-            
+        for(int i = 0; i<3; i++){
+            coordXRec[i] = coordX[i];
+            coordYRec[i] = coordY[i];
         }
+        coordXRec[3] = coordX[indexBase];
+        coordYRec[3] = coordY[indexHeight];
+    }
 
+    for(int i = 0; i<4; i++){
+        cout << "(" << coordXRec[i] << "; " << coordYRec[i] << ")" << endl;
     }
 }
