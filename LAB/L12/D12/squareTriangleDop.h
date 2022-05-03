@@ -15,17 +15,11 @@ public:
     void setTriangle(double* coordX, double* coordY);
 
     void definitionCoord(int& indexVert, int& indexHeight, int& indexBase);
-    
-    void scaleTriangle(double n);
-    
-    void turnTriangle();
 
-    void mirrorTriangle();
+    double square();
 
     int rightTriangle();
 
     void printTriangle(); //const;
-
-    int checkTriangle();
 
 };

@@ -5,7 +5,7 @@
 /*Написать функцию, считающую пощадь треугольника и функцию "склеивания" треугольников в прямоугольник*/
 
 #include <iostream>
-#include "squareTriangle.h"
+#include "squareTriangleDop.h"
 using namespace std;
  
 int main() {
@@ -27,23 +27,8 @@ int main() {
     check = treug.rightTriangle();
     if (check==1) {
         cout<< "This is a right triangle"<<endl;
-    
-        treug.printTriangle();
-        cout<<endl;
-
-        double n;
-        cout<<"Enter scale\n"<<endl;
-        cin >> n;
-        treug.scaleTriangle(n);
-        cout<<"Coordinates after scaling:"<< endl;
-        treug.printTriangle();
-
-        cout<<"Coordinates after mirroring: "<< endl;
-        treug.mirrorTriangle();
-        treug.printTriangle();
-
-        cout<<"Coordinates after turning:"<< endl;
-        treug.turnTriangle();
+        double square = treug.square();
+        cout << "Square of triangle:" << square << endl;
 
     }
     else cout<<"This is not a right triangle"<<endl;

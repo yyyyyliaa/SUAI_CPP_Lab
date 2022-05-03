@@ -5,7 +5,7 @@
 /*Написать функцию, считающую пощадь треугольника и функцию "склеивания" треугольников в прямоугольник*/
 
 #include <iostream>
-#include "squareTriangle.h"
+#include "squareTriangleDop.h"
 #include <math.h>
 using namespace std;
 
@@ -54,52 +54,20 @@ void SquareTriangle::definitionCoord(int& indexVert, int& indexHeight, int& inde
     }
 }
 
-void SquareTriangle::scaleTriangle(double n){
-    int indexVert;
-    int indexHeight;
-    int indexBase;
-
-    definitionCoord(indexVert, indexHeight, indexBase);
-    
-    p_coordY[indexHeight]= (p_coordY[indexHeight]-p_coordY[indexVert])*sqrt(n)+p_coordY[indexVert];
-    p_coordX[indexBase] = (p_coordX[indexBase]-p_coordX[indexVert])*sqrt(n)+p_coordX[indexVert];
-}
-
-void SquareTriangle::turnTriangle(){
+double SquareTriangle::square(){
     int indexVert;
     int indexHeight;
     int indexBase;
     
     definitionCoord(indexVert, indexHeight, indexBase);
 
-    int tmpCoordHeightX = p_coordX[indexHeight];
-    int tmpCoordHeightY = p_coordY[indexHeight];
+    int lenHeight = sqrt(pow(p_coordX[indexVert] - p_coordX[indexHeight], 2) + pow(p_coordY[indexVert] - p_coordY[indexHeight], 2));
+    int lenBase = sqrt(pow(p_coordX[indexVert] - p_coordX[indexBase], 2) + pow(p_coordY[indexVert] - p_coordY[indexBase], 2));
 
-    p_coordX[indexHeight] = (p_coordY[indexVert]-p_coordY[indexBase])+p_coordX[indexVert];
-    p_coordY[indexHeight] = (p_coordX[indexVert]-p_coordX[indexBase])+p_coordY[indexVert];
-
-    p_coordX[indexBase] = tmpCoordHeightY;
-    p_coordY[indexBase] = tmpCoordHeightX;
+    return lenHeight*lenBase*0.5;
 
 }
 
-void SquareTriangle::mirrorTriangle(){
-    int indexVert;
-    int indexHeight;
-    int indexBase;
-    
-    definitionCoord(indexVert, indexHeight, indexBase);
-
-    int tmpCoordHeightX = p_coordX[indexHeight];
-    int tmpCoordHeightY = p_coordY[indexHeight];
-
-    p_coordX[indexHeight] = p_coordX[indexBase];
-    p_coordY[indexHeight] = p_coordY[indexBase];
-
-    p_coordY[indexBase] = p_coordY[indexVert]+(p_coordY[indexVert]-tmpCoordHeightY);
-    p_coordX[indexBase] = p_coordX[indexVert]+(p_coordX[indexVert]-tmpCoordHeightX);
-
-}
 
 void mySort(int *array, int size){
     for (int i = 0; i < size; i++){
@@ -126,16 +94,6 @@ int SquareTriangle::rightTriangle(){
     return 0;
 }
 
-// int SquareTriangle::checkTriangle(){
-//     int len[3];
-//     len[0] = sqrt(pow(p_coordX[0] - p_coordX[1], 2) + pow(p_coordY[0] - p_coordY[1], 2));
-//     len[1] = sqrt(pow(p_coordX[1] - p_coordX[2], 2) + pow(p_coordY[1] - p_coordY[2], 2));
-//     len[2] = sqrt(pow(p_coordX[0] - p_coordX[2], 2) + pow(p_coordY[0] - p_coordY[2], 2));
-
-//     if ((len[0] < len[1] + len[2]) && (len[1] < len[0] + len[2]) && (len[2] < len[1] + len[0]))
-//         return 1;
-//     else return 0;
-// }
 
 void SquareTriangle::printTriangle(){
     for (int i = 0; i < 3; i++){
