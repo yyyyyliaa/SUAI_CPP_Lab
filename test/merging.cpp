@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    int coordX[3] = {1, 1, 4};  /*TODO: Оформить как функцию и перенести в лабу*/
+    int coordX[3] = {1, 1, 4};  
     int coordY[3] = {1, 3, 1};
 
     int coordX1[3] = {4, 1, 4};
