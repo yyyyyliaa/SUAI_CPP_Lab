@@ -17,11 +17,9 @@ public:
 
     double square();
 
-    int function();
-
     int rightTriangle();
 
-    void printTriangle(); //const;
+    void printTriangle() const; 
 
 };
 

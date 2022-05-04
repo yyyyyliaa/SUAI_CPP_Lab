@@ -183,7 +183,7 @@ int SquareTriangle::rightTriangle(){
 }
 
 
-void SquareTriangle::printTriangle(){
+void SquareTriangle::printTriangle() const{
     for (int i = 0; i < 3; i++){
         cout << "(" << p_coordX[i] << "; " << p_coordY[i] << ")" << endl;
     }
