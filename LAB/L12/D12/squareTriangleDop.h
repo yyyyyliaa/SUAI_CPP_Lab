@@ -4,14 +4,14 @@ class SquareTriangle {
 
 private:
     int p_coordX[3];
-    int p_coordY[3];    /* TODO: добавить переменные для индексов вершины, высоты и основания*/
+    int p_coordY[3];   
 
 public:
     SquareTriangle();
      
-    SquareTriangle(double* coordX, double* coordY);
+    SquareTriangle(int* coordX, int* coordY);
 
-    void setTriangle(double* coordX, double* coordY);
+    void setTriangle(int* coordX, int* coordY);
 
     void definitionCoord(int& indexVert, int& indexHeight, int& indexBase);
 
@@ -25,19 +25,11 @@ public:
 
 };
 
-// class Rectangle{
+void definitionCoord(int& indexVert, int& indexHeight, int& indexBase, int* coordX, int* coordY);
 
-// private:
-//     int p_coordX[4];
-//     int p_coordY[4];
+int len(int index, int* coordX, int* coordY);
 
-// public:
-//     Rectangle();
+int checkingMerger(int* coordX, int* coordY, int* coordX1, int* coordY1);
 
-//     Rectangle(int* coordX, int* coordY);
+void initRectangle(int* coordX, int* coordY, int* coordX1, int* coordY1, int* coordXRec, int* coordYRec);
 
-//     void setRectangle(int* coordX, int* coordY);
-
-//     void printRectangle(); //const;
-
-// };

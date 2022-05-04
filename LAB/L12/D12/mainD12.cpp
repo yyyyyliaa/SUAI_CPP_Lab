@@ -10,15 +10,16 @@ using namespace std;
  
 int main() {
 
-    double coordX[3];
-    double coordY[3];
+    int coordX[3];
+    int coordY[3];
 
-    double coordX1[3];
-    double coordY1[3];
+    int coordX1[3];
+    int coordY1[3];
 
     int coordXRec[4];
     int coordYRec[4];
 
+    cout<<"Enter coordinates of first triangle:"<<endl;
     for (int i = 0; i <= 2; i++){
             cout<<"Enter coordinate x" << i << ":";
             cin >> coordX[i];
@@ -27,6 +28,9 @@ int main() {
             cout<<endl;
     }
 
+    cout<<endl;
+    
+    cout<<"Enter coordinates of second triangle:"<<endl;
     for (int i = 0; i <= 2; i++){
             cout<<"Enter coordinate x" << i << ":";
             cin >> coordX1[i];
@@ -39,27 +43,34 @@ int main() {
     SquareTriangle treug (coordX, coordY);
     SquareTriangle treug1 (coordX1, coordY1);
 
-    // check = treug.rightTriangle();
-    // if (check==1) {
-    //     cout<< "This is a right triangle"<<endl;
-    //     double square = treug.square();
-    //     cout << "Square of triangle:" << square << endl;
+    check = treug.rightTriangle();
+    if (check==1) {
+        //cout<< "This is a right triangle"<<endl;
+        double square = treug.square();
+        cout << "Square of first triangle:" << square << endl;
 
-    // }
-    // else cout<<"This is not a right triangle"<<endl;
+    }
+    else cout<<"This is not a right triangle"<<endl;
 
-    // check = treug1.rightTriangle();
-    // if (check==1) {
-    //     cout<< "This is a right triangle"<<endl;
-    //     double square = treug.square();
-    //     cout << "Square of triangle:" << square << endl;
+    check = treug1.rightTriangle();
+    if (check==1) {
+        //cout<< "This is a right triangle"<<endl;
+        double square = treug.square();
+        cout << "Square of second triangle:" << square << endl;
 
-    // }
-    // else cout<<"This is not a right triangle"<<endl;
+    }
+    else cout<<"This is not a right triangle"<<endl;
 
     check = treug.rightTriangle()+treug1.rightTriangle();
     if (check==2) {
         cout<< "Both triangles are right"<<endl;
+
+        initRectangle(coordX, coordY, coordX1, coordY1, coordXRec, coordYRec);
+
+        cout<<"Coordinate rectangle:"<< endl;
+        for(int i = 0; i<4; i++){
+            cout << "(" << coordXRec[i] << "; " << coordYRec[i] << ")" << endl;
+        }   
 
     }
     else cout<<"Merging triangles is impossible"<<endl;

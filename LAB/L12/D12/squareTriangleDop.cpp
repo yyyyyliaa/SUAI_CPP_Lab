@@ -10,11 +10,11 @@
 using namespace std;
 
 
-SquareTriangle::SquareTriangle(double* coordX, double* coordY){
+SquareTriangle::SquareTriangle(int* coordX, int* coordY){
     setTriangle(coordX, coordY);
 }
 
-void SquareTriangle::setTriangle(double* coordX, double* coordY){
+void SquareTriangle::setTriangle(int* coordX, int* coordY){
     for (int i = 0; i < 3; i++){
         p_coordX[i] = coordX[i];
         p_coordY[i] = coordY[i];
@@ -54,6 +54,39 @@ void SquareTriangle::definitionCoord(int& indexVert, int& indexHeight, int& inde
     }
 }
 
+void definitionCoord(int& indexVert, int& indexHeight, int& indexBase, int* coordX, int* coordY){
+    if ((coordX[0]==coordX[1])&&(coordY[0]==coordY[2])){
+        indexVert = 0;
+        indexHeight = 1;
+        indexBase = 2;
+    }
+    else if ((coordX[0]==coordX[2])&&(coordY[0]==coordY[1])){
+        indexVert = 0;
+        indexHeight = 2;
+        indexBase = 1;
+    }
+    else if ((coordX[1]==coordX[0])&&(coordY[1]==coordY[2])){ 
+        indexVert = 1;
+        indexHeight = 0;
+        indexBase = 2;
+    }
+    else if ((coordX[1]==coordX[2])&&(coordY[1]==coordY[0])){
+        indexVert = 1;
+        indexHeight = 2;
+        indexBase = 0;
+    }
+    else if ((coordX[2]==coordX[1])&&(coordY[2]==coordY[0])){ 
+        indexVert = 2;
+        indexHeight = 1;
+        indexBase = 0;
+    }
+    else if ((coordX[2]==coordX[0])&&(coordY[2]==coordY[1])){
+        indexVert = 2;
+        indexHeight = 0;
+        indexBase = 1;
+    }
+}
+
 int len(int index, int* coordX, int* coordY){
     return sqrt(pow(coordX[index] - coordX[index], 2) + pow(coordY[index] - coordY[index], 2));
 }
@@ -72,11 +105,57 @@ double SquareTriangle::square(){
 
 }
 
-int SquareTriangle::function(){
+int checkingMerger(int* coordX, int* coordY, int* coordX1, int* coordY1){
+    int indexVert;
+    int indexHeight;
+    int indexBase;
 
+    int indexVert1;
+    int indexHeight1;
+    int indexBase1;
+
+    definitionCoord(indexVert, indexHeight, indexBase, coordX, coordY);
+    definitionCoord(indexVert1, indexHeight1, indexBase1, coordX1, coordY1);
+
+    int lenH = len(indexHeight, coordX, coordY);
+    int lenB = len(indexBase, coordX, coordY);
+
+    int lenH1 =len(indexHeight1, coordX1, coordY1);
+    int lenB1 = len(indexBase1, coordX1, coordY1);
+
+    int check;
+    if ((lenH == lenH1) && (lenB == lenB1))
+        check++;
+    else check = 0;
+
+    if (((coordX[indexVert] < coordX[indexBase]) && (coordY[indexVert] < coordY[indexHeight])) && 
+            ((coordX1[indexVert1] > coordX1[indexBase1]) && (coordY1[indexVert1] > coordY1[indexHeight1])))
+        check++;
+    else if (((coordX[indexVert] > coordX[indexBase]) && (coordY[indexVert] > coordY[indexHeight])) && 
+            ((coordX1[indexVert1] < coordX1[indexBase1]) && (coordY1[indexVert1] < coordY1[indexHeight1])))
+        check++;
+
+    return check;
 
 }
 
+void initRectangle(int* coordX, int* coordY, int* coordX1, int* coordY1, int* coordXRec, int* coordYRec){
+    int indexVert;
+    int indexHeight;
+    int indexBase;
+
+    definitionCoord(indexVert, indexHeight, indexBase, coordX, coordY);
+
+    if (checkingMerger(coordX, coordY, coordX1, coordY1)==2){
+        for(int i = 0; i<3; i++){
+            coordXRec[i] = coordX[i];
+            coordYRec[i] = coordY[i];
+        }
+        coordXRec[3] = coordX[indexBase];
+        coordYRec[3] = coordY[indexHeight];
+    }
+
+}
 
 void mySort(int *array, int size){
     for (int i = 0; i < size; i++){
