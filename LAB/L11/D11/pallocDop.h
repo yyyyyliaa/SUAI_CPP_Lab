@@ -8,3 +8,5 @@ char *palloc(int n);
 void pfree(char *p);
 
 void printBitArray();
+
+void printBitArrayCheck();

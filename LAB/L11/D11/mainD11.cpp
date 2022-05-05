@@ -5,7 +5,7 @@
 Биты должны быть упакованы в слова unsigned int, 1 - параграф занят, 0 - параграф свободен.*/
 
 
-#include "palloc.h"
+#include "pallocDop.h"
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
@@ -15,18 +15,23 @@ int main(){
     // if (arr1==NULL) cout<<"ura pobeda pobeda ura pobeda"<<endl;
     // else printBitArray();
     
-    char* arr2 =palloc(16);
-    if (arr2==NULL) cout<<"ura pobeda pobeda ura pobeda"<<endl;
-    else printBitArray();
+    char* arr2 =palloc(16+8);
+    //if (arr2==NULL) cout<<"ura pobeda pobeda ura pobeda"<<endl;
+    cout<<"Bit array:"<< endl;
+    printBitArray();
+    printBitArrayCheck();
 
     char* arr3 = palloc(40);
+    cout<<"Bit array:"<< endl;
     printBitArray();
+    printBitArrayCheck();
+    // printBitArray();
 
-    char* arr5 =palloc(64);
-    printBitArray();
+    // char* arr5 =palloc(64);
+    // printBitArray();
 
-    pfree(arr5);
-    printBitArray();
+    // pfree(arr5);
+    // printBitArray();
 
     return 0;
 }
