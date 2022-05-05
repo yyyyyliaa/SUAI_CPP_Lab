@@ -69,7 +69,9 @@ void pfree(char *p){
     for(int i = start; i<start+bitArraySize[start]; i++){
         bitArray[i] = 0;
     }
-
+    for (int i = 0; i<bitArraySize[start]; i++){
+        bitArrayCheck[start]--;
+    }
 }
 
 void copyBites(int start, int size){
