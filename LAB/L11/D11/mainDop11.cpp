@@ -13,16 +13,6 @@ using namespace std;
 int main(){
     char* arr1 =palloc(16*10);
     printBitArray();
-    
-    // char* arr2 =palloc(16);
-    // printBitArray();
-
-    // char* arr3 = palloc(40);
-    // printBitArray();
-
-    // char* arr5 =palloc(64);
-    // printBitArray();
-
 
     movingBites(14, 100, 200);
     printBitArray();
