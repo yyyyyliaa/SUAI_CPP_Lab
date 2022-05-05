@@ -21,14 +21,22 @@ int main(){
     printBitArray();
     printBitArrayCheck();
 
-    char* arr3 = palloc(40);
+    char* arr3 = palloc(32+8);
     cout<<"Bit array:"<< endl;
     printBitArray();
     printBitArrayCheck();
     // printBitArray();
 
-    // char* arr5 =palloc(64);
+    char* arr5 =palloc(48+12);
+    cout<<"Bit array:"<< endl;
+    printBitArray();
+    printBitArrayCheck();
     // printBitArray();
+
+    char* arr6 = palloc(16+7);
+    cout<<"Bit array:"<< endl;
+    printBitArray();
+    printBitArrayCheck();
 
     // pfree(arr5);
     // printBitArray();

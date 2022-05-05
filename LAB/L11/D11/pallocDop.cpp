@@ -3,11 +3,11 @@
 #include <iostream>
 using namespace std;
 
-char memory[16*MemSize]={0};
+char memory[paragraf*MemSize]={0};
 unsigned int bitArray[MemSize] = {0};
 unsigned int bitArraySize[MemSize] = {0};
 unsigned int bitArrayCheck[MemSize] = {0};
-int lastBlock = MemSize;
+int lastBlock = paragraf*MemSize;
 
 char* palloc(int n){
     char* arr = NULL;
@@ -34,25 +34,29 @@ char* palloc(int n){
         return NULL;
 
 
+    
+
+    if (lastBlock == paragraf*MemSize) lastBlock = indexStart+ blocks;
+    bitArrayCheck[lastBlock] += rem;
+    if (bitArrayCheck[lastBlock]==16){
+        bitArray[lastBlock] = 1;
+        lastBlock = indexStart+ blocks;
+    }
+    else if (bitArrayCheck[lastBlock]>16){
+        bitArray[lastBlock] = 1;
+        bitArrayCheck[indexStart+blocks] = bitArrayCheck[lastBlock]- 16;
+        bitArrayCheck[lastBlock] = 16;
+        lastBlock = indexStart+ blocks;
+        
+    }
+    //lastBlock = indexStart+ blocks;
+    
+    bitArraySize[indexStart] = blocks;
+
     for(int i = indexStart; i<indexStart+blocks;i++){
         bitArray[i] = 1;
         bitArrayCheck[i] = 16;
     }
-
-    lastBlock = indexStart+ blocks;
-    bitArrayCheck[lastBlock] += rem;
-    if (bitArrayCheck[lastBlock]==16){
-        bitArray[lastBlock] = 1;
-        lastBlock++;
-    }
-    else if (bitArrayCheck[lastBlock]>16){
-        bitArray[lastBlock] = 1;
-        bitArrayCheck[lastBlock+1] = bitArrayCheck[lastBlock]- 16;
-        lastBlock++;
-        
-    }
-    
-    bitArraySize[indexStart] = blocks;
 
     return memory+(blocks*paragraf);
 
