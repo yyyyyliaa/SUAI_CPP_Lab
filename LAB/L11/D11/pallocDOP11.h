@@ -9,4 +9,4 @@ void pfree(char *p);
 
 void printBitArray();
 
-void movingBites(int start, int size);
+void movingBites(int from, int size, int into);

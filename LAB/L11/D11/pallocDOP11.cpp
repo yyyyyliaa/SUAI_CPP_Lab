@@ -1,4 +1,4 @@
-#include "palloc.h"
+#include "pallocDOP11.h"
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
@@ -58,8 +58,8 @@ void printBitArray() {
 }
 
 void movingBites(int from, int size, int into){
-    int end = from + size - 1;
     int blockToMove = into/paragraf;
+    int start = from/paragraf;
 
     int blocks;
     if ((size%paragraf)==0) blocks = size/paragraf;
@@ -67,19 +67,19 @@ void movingBites(int from, int size, int into){
 
     int flag = 0;
 
-    for (int i = blockToMove; i<blocks; i++){
+    for (int i = blockToMove; i<blockToMove+blocks; i++){
         if(bitArray[i]==1) {
             flag = 1;
             break;
         }
     }
 
-    if (flag==1) cout<<"Moving is not possible";
+    if (flag==1) cout<<"Moving is not possible"<<endl;
     else {
-        for(int i = into; i<blocks; i++){
+        for(int i = blockToMove; i<blockToMove+blocks; i++){
             bitArray[i] = 1;
         }
-        for (int i = from/paragraf; i<(from/paragraf)+blocks;i++){
+        for (int i = start; i<start+blocks;i++){
             bitArray[i] = 0;
         }
     }
