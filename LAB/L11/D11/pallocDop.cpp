@@ -8,6 +8,7 @@ unsigned int bitArray[MemSize] = {0};
 unsigned int bitArraySize[MemSize] = {0};
 unsigned int bitArrayCheck[MemSize] = {0};
 int lastBlock = paragraf*MemSize;
+int indexEnd;
 
 char* palloc(int n){
     char* arr = NULL;
@@ -57,6 +58,7 @@ char* palloc(int n){
         bitArray[i] = 1;
         bitArrayCheck[i] = 16;
     }
+    indexEnd = indexStart+ blocks;
 
     return memory+(blocks*paragraf);
 
@@ -70,9 +72,40 @@ void pfree(char *p){
 
 }
 
+void copyBites(int start, int size){
+    int end = start + size - 1;
+
+    if ((start/paragraf)==(end/paragraf)){
+        int indexBlock = start/paragraf;
+        bitArray[indexBlock] = 0;
+        bitArrayCheck[indexBlock] = paragraf - size;
+
+        bitArrayCheck[lastBlock]+=size;
+
+        if (bitArrayCheck[lastBlock]>16){
+        bitArray[lastBlock] = 1;
+        bitArrayCheck[indexEnd] = bitArrayCheck[lastBlock]- 16;
+        bitArrayCheck[lastBlock] = 16;
+        lastBlock = indexEnd;
+        }
+    }
+    else {
+        int indexBlockStart = start/paragraf;
+        int indexBlockEnd = end/paragraf;
+        bitArray[indexBlockStart] = 0;
+        bitArray[indexBlockEnd] = 0;
+
+        for(int i = start; i<=end; i++){
+            bitArrayCheck[i/paragraf]--;
+        }
+
+    }
+}
+
 void printBitArray() {
-    for (int i = 0; i < MemSize; i++) 
+    for (int i = 0; i < MemSize; i++){ 
         cout<<bitArray[i]<< " ";
+    }
     cout<<endl<<endl;
 }
 

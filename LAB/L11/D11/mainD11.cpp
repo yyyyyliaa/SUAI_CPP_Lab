@@ -15,28 +15,33 @@ int main(){
     // if (arr1==NULL) cout<<"ura pobeda pobeda ura pobeda"<<endl;
     // else printBitArray();
     
-    char* arr2 =palloc(16+8);
+    char* arr2 =palloc(32);
     //if (arr2==NULL) cout<<"ura pobeda pobeda ura pobeda"<<endl;
     cout<<"Bit array:"<< endl;
     printBitArray();
     printBitArrayCheck();
 
-    char* arr3 = palloc(32+8);
+    copyBites(14, 10);
     cout<<"Bit array:"<< endl;
     printBitArray();
     printBitArrayCheck();
-    // printBitArray();
 
-    char* arr5 =palloc(48+12);
-    cout<<"Bit array:"<< endl;
-    printBitArray();
-    printBitArrayCheck();
+    // char* arr3 = palloc(32+8);
+    // cout<<"Bit array:"<< endl;
     // printBitArray();
+    // printBitArrayCheck();
+    // // printBitArray();
 
-    char* arr6 = palloc(16+7);
-    cout<<"Bit array:"<< endl;
-    printBitArray();
-    printBitArrayCheck();
+    // char* arr5 =palloc(48+12);
+    // cout<<"Bit array:"<< endl;
+    // printBitArray();
+    // printBitArrayCheck();
+    // // printBitArray();
+
+    // char* arr6 = palloc(16+7);
+    // cout<<"Bit array:"<< endl;
+    // printBitArray();
+    // printBitArrayCheck();
 
     // pfree(arr5);
     // printBitArray();
