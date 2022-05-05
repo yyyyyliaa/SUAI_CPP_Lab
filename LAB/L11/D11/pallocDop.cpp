@@ -34,9 +34,6 @@ char* palloc(int n){
     if (flag==0)
         return NULL;
 
-
-    
-
     if (lastBlock == paragraf*MemSize) lastBlock = indexStart+ blocks;
     bitArrayCheck[lastBlock] += rem;
     if (bitArrayCheck[lastBlock]==16){
@@ -48,9 +45,7 @@ char* palloc(int n){
         bitArrayCheck[indexStart+blocks] = bitArrayCheck[lastBlock]- 16;
         bitArrayCheck[lastBlock] = 16;
         lastBlock = indexStart+ blocks;
-        
     }
-    //lastBlock = indexStart+ blocks;
     
     bitArraySize[indexStart] = blocks;
 
@@ -61,7 +56,6 @@ char* palloc(int n){
     indexEnd = indexStart+ blocks;
 
     return memory+(blocks*paragraf);
-
 }
 
 void pfree(char *p){
@@ -100,8 +94,8 @@ void copyBites(int start, int size){
         for(int i = start; i<=end; i++){
             bitArrayCheck[i/paragraf]--;
         }
-
     }
+    // for (int i = 0)
 }
 
 void printBitArray() {
