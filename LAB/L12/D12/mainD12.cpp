@@ -10,14 +10,14 @@ using namespace std;
  
 int main() {
 
-    int coordX[3];
-    int coordY[3];
+    double coordX[3];
+    double coordY[3];
 
-    int coordX1[3];
-    int coordY1[3];
+    double coordX1[3];
+    double coordY1[3];
 
-    int coordXRec[4];
-    int coordYRec[4];
+    double coordXRec[4];
+    double coordYRec[4];
 
     cout<<"Enter coordinates of first triangle:"<<endl;
     for (int i = 0; i <= 2; i++){
@@ -65,7 +65,7 @@ int main() {
     if (check==2) {
         cout<< "Both triangles are right"<<endl;
 
-        initRectangle(coordX, coordY, coordX1, coordY1, coordXRec, coordYRec);
+        //initRectangle(coordX, coordY, coordX1, coordY1, coordXRec, coordYRec);
 
         cout<<"Coordinate rectangle:"<< endl;
         for(int i = 0; i<4; i++){

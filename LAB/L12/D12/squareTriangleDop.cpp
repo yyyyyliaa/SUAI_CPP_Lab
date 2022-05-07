@@ -10,17 +10,16 @@
 using namespace std;
 
 
-SquareTriangle::SquareTriangle(int* coordX, int* coordY){
+SquareTriangle::SquareTriangle(double* coordX, double* coordY){
     setTriangle(coordX, coordY);
 }
 
-void SquareTriangle::setTriangle(int* coordX, int* coordY){
+void SquareTriangle::setTriangle(double* coordX, double* coordY){
     for (int i = 0; i < 3; i++){
         p_coordX[i] = coordX[i];
         p_coordY[i] = coordY[i];
     }
 }
-
 void SquareTriangle::definitionCoord(int& indexVert, int& indexHeight, int& indexBase){
     if ((this->p_coordX[0]==this->p_coordX[1])&&(this->p_coordY[0]==this->p_coordY[2])){
         indexVert = 0;
@@ -53,7 +52,50 @@ void SquareTriangle::definitionCoord(int& indexVert, int& indexHeight, int& inde
         indexBase = 1;
     }
 }
+int SquareTriangle::rightTriangle(){
+    int len[3];
+    len[0] = pow(p_coordX[0] - p_coordX[1], 2) + pow(p_coordY[0] - p_coordY[1], 2);
+    len[1] = pow(p_coordX[1] - p_coordX[2], 2) + pow(p_coordY[1] - p_coordY[2], 2);
+    len[2] = pow(p_coordX[2] - p_coordX[0], 2) + pow(p_coordY[2] - p_coordY[0], 2);
 
+    mySort(len, 3);
+
+    if ((len[0] + len[1]) == len[2])
+        return 1;
+    return 0;
+}
+double SquareTriangle::square(){
+    int indexVert;
+    int indexHeight;
+    int indexBase;
+    
+    definitionCoord(indexVert, indexHeight, indexBase);
+
+    int lenHeight = sqrt(pow(p_coordX[indexVert] - p_coordX[indexHeight], 2) + pow(p_coordY[indexVert] - p_coordY[indexHeight], 2));
+    int lenBase = sqrt(pow(p_coordX[indexVert] - p_coordX[indexBase], 2) + pow(p_coordY[indexVert] - p_coordY[indexBase], 2));
+
+    return lenHeight*lenBase*0.5;
+
+}
+void SquareTriangle::printTriangle() const{
+    for (int i = 0; i < 3; i++){
+        cout << "(" << p_coordX[i] << "; " << p_coordY[i] << ")" << endl;
+    }
+}
+int len(int index, int* coordX, int* coordY){
+    return sqrt(pow(coordX[index] - coordX[index], 2) + pow(coordY[index] - coordY[index], 2));
+}
+void mySort(int *array, int size){
+    for (int i = 0; i < size; i++){
+        for (int j = size - 1; j > i; j--){
+            if (array[j - 1] > array[j]){
+                int tmp = array[j - 1];
+                array[j - 1] = array[j];
+                array[j] = tmp;
+            }
+        }
+    }
+}
 void definitionCoord(int& indexVert, int& indexHeight, int& indexBase, int* coordX, int* coordY){
     if ((coordX[0]==coordX[1])&&(coordY[0]==coordY[2])){
         indexVert = 0;
@@ -87,25 +129,22 @@ void definitionCoord(int& indexVert, int& indexHeight, int& indexBase, int* coor
     }
 }
 
-int len(int index, int* coordX, int* coordY){
-    return sqrt(pow(coordX[index] - coordX[index], 2) + pow(coordY[index] - coordY[index], 2));
+
+
+
+
+
+Rectaingle::Rectaingle(double* coordXRec, double* coordYRec){
+    setRectaingle(coordXRec, coordYRec);
 }
 
-double SquareTriangle::square(){
-    int indexVert;
-    int indexHeight;
-    int indexBase;
-    
-    definitionCoord(indexVert, indexHeight, indexBase);
-
-    int lenHeight = sqrt(pow(p_coordX[indexVert] - p_coordX[indexHeight], 2) + pow(p_coordY[indexVert] - p_coordY[indexHeight], 2));
-    int lenBase = sqrt(pow(p_coordX[indexVert] - p_coordX[indexBase], 2) + pow(p_coordY[indexVert] - p_coordY[indexBase], 2));
-
-    return lenHeight*lenBase*0.5;
-
+void Rectaingle::setRectaingle(double* coordXRec, double* coordYRec){
+    for (int i = 0; i<4; i++){
+        p_coordXRec[i] = coordXRec[i];
+        p_coordYRec[i] = coordYRec[i];
+    }
 }
-
-int checkingMerger(int* coordX, int* coordY, int* coordX1, int* coordY1){
+int Rectaingle::checkingMerger(double* coordX, double* coordY, double* coordX1, double* coordY1){
     int indexVert;
     int indexHeight;
     int indexBase;
@@ -138,8 +177,7 @@ int checkingMerger(int* coordX, int* coordY, int* coordX1, int* coordY1){
     return check;
 
 }
-
-void initRectangle(int* coordX, int* coordY, int* coordX1, int* coordY1, int* coordXRec, int* coordYRec){
+void Rectaingle::initRectangle(double* coordX, double* coordY, double* coordX1, double* coordY1, double* coordXRec, double* coordYRec){
     int indexVert;
     int indexHeight;
     int indexBase;
@@ -156,35 +194,11 @@ void initRectangle(int* coordX, int* coordY, int* coordX1, int* coordY1, int* co
     }
 
 }
-
-void mySort(int *array, int size){
-    for (int i = 0; i < size; i++){
-        for (int j = size - 1; j > i; j--){
-            if (array[j - 1] > array[j]){
-                int tmp = array[j - 1];
-                array[j - 1] = array[j];
-                array[j] = tmp;
-            }
-        }
-    }
-}
-
-int SquareTriangle::rightTriangle(){
-    int len[3];
-    len[0] = pow(p_coordX[0] - p_coordX[1], 2) + pow(p_coordY[0] - p_coordY[1], 2);
-    len[1] = pow(p_coordX[1] - p_coordX[2], 2) + pow(p_coordY[1] - p_coordY[2], 2);
-    len[2] = pow(p_coordX[2] - p_coordX[0], 2) + pow(p_coordY[2] - p_coordY[0], 2);
-
-    mySort(len, 3);
-
-    if ((len[0] + len[1]) == len[2])
-        return 1;
-    return 0;
+void Rectaingle::printRectaingle() const{
+    for (int i = 0; i<4; i++)
+            cout << "(" << p_coordXRec[i] << "; " << p_coordYRec[i] << ")" << endl;
 }
 
 
-void SquareTriangle::printTriangle() const{
-    for (int i = 0; i < 3; i++){
-        cout << "(" << p_coordX[i] << "; " << p_coordY[i] << ")" << endl;
-    }
-}
+
+
