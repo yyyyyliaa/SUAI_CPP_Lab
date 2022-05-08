@@ -10,3 +10,15 @@
 действия: покрасить (покрасить лапы в цвет крыльев).	
 
 Класс Farm: добавить животное, покрасить всех животных, удалить животное, показать всех животных.*/
+
+#include "lab14v9.h"
+
+int main(){
+    Farm sadFarm;
+    Goose sadGoose;
+    sadFarm.addAnimal(&sadGoose);
+
+    sadGoose.show();
+
+
+}
