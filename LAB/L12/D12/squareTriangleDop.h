@@ -6,6 +6,10 @@ private:
     double p_coordX[3];
     double p_coordY[3];   
 
+    int indexVert;
+    int indexHeight;
+    int indexBase;
+
 public:
     SquareTriangle();
      
@@ -13,13 +17,15 @@ public:
 
     void setTriangle(double* coordX, double* coordY);
 
-    void definitionCoord(int& indexVert, int& indexHeight, int& indexBase);
+    void definitionCoord();
 
     double square();
 
     int rightTriangle();
 
     void printTriangle() const; 
+
+    friend class Rectaingle;
 
 };
 
@@ -30,22 +36,27 @@ private:
     double p_coordXRec[4];
     double p_coordYRec[4];
 
+    SquareTriangle treug;
     SquareTriangle treug1;
-    SquareTriangle treug2;
 
 public:
+
+
     Rectaingle();
 
-    Rectaingle(double* coordXRec, double* coordYRec);
+    Rectaingle(double* coordX, double* coordY, double* coordX1, double* coordY1);
 
-    void setRectaingle(double* coordXRec, double* coordYRec);
-
+    // void setRectaingle(double* coordXRec, double* coordYRec);
 
     int checkingMerger(double* coordX, double* coordY, double* coordX1, double* coordY1);
 
-    void initRectangle(double* coordX, double* coordY, double* coordX1, double* coordY1, double* coordXRec, double* coordYRec);
+    void initRectangle(double* coordX, double* coordY, double* coordX1, double* coordY1);
 
     void printRectaingle() const;
+
+    void printIndexBase();
+
+    friend class SquareTriangle;
 
 };
 
