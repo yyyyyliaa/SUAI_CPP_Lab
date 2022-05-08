@@ -41,6 +41,8 @@ int main() {
    } while (rightTriangle(coordX1, coordY1)==0);
 
     Rectaingle rec(coordX, coordY, coordX1, coordY1);
+    
+    rec.squareTriangles();
 
     rec.initRectangle();
 

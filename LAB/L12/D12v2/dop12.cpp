@@ -120,6 +120,7 @@ void Rectaingle::initRectangle(){
         }
         p_coordXRec[3] = treug.p_coordX[treug.indexBase];
         p_coordYRec[3] = treug.p_coordY[treug.indexHeight];
+        cout<<"Coordinates rectaingle:"<<endl;
         printRectaingle();
     }
     else cout<< "Mergering is not possible"<<endl;
@@ -128,6 +129,19 @@ void Rectaingle::printRectaingle() const{
 
     for (int i = 0; i<4; i++)
             cout << "(" << p_coordXRec[i] << "; " << p_coordYRec[i] << ")" << endl;
+}
+void Rectaingle:: squareTriangles(){
+    int lenH = sqrt(pow(treug.p_coordX[treug.indexVert] - treug.p_coordX[treug.indexHeight], 2) + pow(treug.p_coordY[treug.indexVert] - treug.p_coordY[treug.indexHeight], 2));
+    int lenB = sqrt(pow(treug.p_coordX[treug.indexVert] - treug.p_coordX[treug.indexBase], 2) + pow(treug.p_coordY[treug.indexVert] - treug.p_coordY[treug.indexBase], 2));
+
+    int lenH1 =sqrt(pow(treug1.p_coordX[treug1.indexVert] - treug1.p_coordX[treug1.indexHeight], 2) + pow(treug1.p_coordY[treug1.indexVert] - treug1.p_coordY[treug1.indexHeight], 2));
+    int lenB1 = sqrt(pow(treug1.p_coordX[treug1.indexVert] - treug1.p_coordX[treug1.indexBase], 2) + pow(treug1.p_coordY[treug1.indexVert] - treug1.p_coordY[treug1.indexBase], 2));
+
+    double s1 = 0.5*lenH*lenB;
+    cout<<"Square of treug: "<<s1<<endl;
+
+    double s2 = 0.5*lenH1*lenB1;
+    cout<<"Square of treug1: "<<s2<<endl;
 }
 
 

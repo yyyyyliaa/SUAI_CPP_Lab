@@ -51,6 +51,8 @@ public:
     void initRectangle();
 
     void printRectaingle() const;
+    
+    void squareTriangles();
 
 };
 
