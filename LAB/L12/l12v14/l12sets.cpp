@@ -7,13 +7,17 @@
 #include <math.h>
 using namespace std;
 
-IntSet::IntSet(){
-    int* set=(int*)malloc(sizeof(int)*size);
-
-    setNumbers(set);
+IntSet::IntSet(int* set, int size){
+    setNumbers(set, size);
 }
 
-void IntSet:: setNumbers(int* set){
+IntSet::~IntSet(){
+    free(p_set);
+}
+
+void IntSet:: setNumbers(int* set, int size){
+    p_size = size;
+    p_set = (int*)malloc(sizeof(int)*size);
     for(int i = 0; i<size; i++){
         p_set[i] = set[i];
     }
@@ -23,7 +27,7 @@ void IntSet:: setNumbers(int* set){
 int IntSet::check(int num){ //проверка на вхождение элемента в множество
     int result = 0;
 
-    for(int i = 0; i<size; i++)
+    for(int i = 0; i<p_size; i++)
         if (p_set[i]==num) {
             result =  1; 
             break;
@@ -32,114 +36,50 @@ int IntSet::check(int num){ //проверка на вхождение элем�
     return result;
 }
 
-void IntSet::addNumber(int num){ //добавление элемнта в первое множество
+void IntSet::addNumber(int num){ //добавление элемнта в множество
     int ch = check(num);    
     if(ch!=1){
-        size++;
-        p_set = (int*)realloc(p_set, sizeof(int)*(size));
-        p_set[size-1] = num;
+        p_size++;
+        p_set = (int*)realloc(p_set, sizeof(int)*(p_size));
+        p_set[p_size-1] = num;
     }
 }
 
 void IntSet::delNumber(int num){  //удаление элемента из множества
     int ch = check(num);
     if (ch==1){
-        for(int i = 0; i<size; i++){
+        for(int i = 0; i<p_size; i++){
             if(p_set[i]==num){
-                for(int j=i; j<size; j++) 
+                for(int j=i; j<p_size; j++) 
                     p_set[j]=p_set[j+1];
-                size--;
-                p_set=(int*)realloc(p_set, sizeof(int)*size);
-
+                p_size--;
+                p_set=(int*)realloc(p_set, sizeof(int)*p_size);
             }
         }
     }
     else cout<<"Number is not in the set"<<endl;
 }
 
-void mySort(int* array, int size){   //сортировка
-    for (int i = 0; i<size; i++){
-        for (int j = size-1; j>i; j--){
-            if(array[j-1]>array[j]){
-                int tmp= array[j-1];
-                array[j-1]=array[j];
-                array[j]=tmp;
-            }
+void IntSet::unitSets(IntSet set){ //объединение множеств
+    for (int i = 0; i<set.p_size; i++){ //остаются элементы, которые есть в первом или во втором множестве (без повторений)
+        if(this->check(set.p_set[i])==0){
+            this->addNumber(set.p_set[i]);
         }
     }
 }
 
- 
-// void IntSet::uniteSet(){  //объединение множеств
-//     int maxUnitSize= size1+size2;
-//     unitSize= size1;
-//     int j=size1;
-//     for(int i = 0; i<size1; i++)
-//         p_unitSet[i]=p_set1[i];
-    
-//     for(int i = 0; i<size2; i++){
-//         int ch=check(p_set2[i]);
-//         if(ch==2){
-//             unitSize++;
-//             p_unitSet=(int*)realloc(p_unitSet, sizeof(int)*unitSize);
-//             p_unitSet[j]=p_set2[i];
-//             j++;
-//         }
-//     }
-//     //mySort(p_unitSet, unitSize);
-// }
+void IntSet::subSets(IntSet set){  //вычитание одного множества из второго       
+    for(int i = 0; i<this->p_size; i++){   //из первого множества вычитаются все эелементы, содержащиеся во втором множестве
+        if(set.check(this->p_set[i])==1) {
+            this->delNumber(this->p_set[i]);
+        }
+    }
+}
 
 
-// void IntSet::firstSubSecond(){  //вычитание из первого множества второго
-//     subSize = size1;                 //из первого множества вычитаются все эелементы, содержащиеся во втором множестве
-//     int j = 0;
-//     for(int i = 0; i<size1; i++){
-//         int ch = check(p_set1[i]);
-//         if(ch==1) {
-//             p_subSet[j]=p_set1[i];
-//             j++;
-//         }
-//         else subSize--;
-//     }
-// }
-
-// void IntSet::secondSubFirst(){  //вычитание из второго множества первого
-//     subSize = size2;
-//     int j = 0;
-//     for(int i = 0; i<size2; i++){
-//         int ch = check(p_set2[i]);
-//         if(ch!=3) {
-//             p_subSet[j]=p_set2[i];
-//             j++;
-//         }
-//         else subSize--;
-//     }
-// }
-
-// void IntSet::printFirstSet(){
-//     cout<<"[";
-//     for(int i = 0; i<size1; i++)
-//         cout<<p_set1[i]<<" ";
-//     cout<<"]";
-// }
-
-// void IntSet::printSecondSet(){
-//     cout<<"[";
-//     for(int i = 0; i<size2; i++)
-//         cout<<p_set2[i]<<" ";
-//     cout<<"]";
-// }
-
-// void IntSet::printSubSet(){
-//     cout<<"[";
-//     for(int i = 0; i<subSize; i++)
-//         cout<<p_subSet[i]<<" ";
-//     cout<<"]";
-// }
-
-// void IntSet::printUnitSet(){
-//     cout<<"[";
-//     for(int i = 0; i<unitSize; i++)
-//         cout<<p_unitSet[i]<<" ";
-//     cout<<"]";
-// }
+void IntSet::printSet(){
+    cout<<"[";
+    for(int i = 0; i<p_size; i++)
+        cout<<p_set[i]<<" ";
+    cout<<"]"<<endl;
+}

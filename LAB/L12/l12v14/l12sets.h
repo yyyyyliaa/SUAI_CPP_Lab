@@ -3,7 +3,6 @@
 объединения множеств и вычитания одного множества из другого*/
 
 #pragma once
-#define SIZE 3
 
 #include <iostream>
 
@@ -11,39 +10,30 @@ class IntSet {
 
 private:
 
-    int size = SIZE;
+    int p_size;
 
-    int* p_set=(int*)malloc(sizeof(int)*size);
+    int* p_set;
 
 
 public:
+    ~IntSet();
 
     IntSet();
 
-    void setNumbers(int* set);
+    IntSet(int* set, int size);
+
+    void setNumbers(int* set, int size);
 
     int check(int num);
-
-    void printFirstSet();
-
-    void printSecondSet();
-
-    void printSubSet();
-
-    void printUnitSet();
 
     void addNumber(int num);
 
     void delNumber(int num);
 
-    void delSecondSet();
+    void unitSets(IntSet set);
 
-    void uniteSet();
+    void subSets(IntSet set);
 
-    void firstSubSecond();
-
-    void secondSubFirst();
-
-    
+    void printSet();
     
 };
