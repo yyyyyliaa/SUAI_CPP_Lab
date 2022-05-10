@@ -22,7 +22,15 @@ int main(){
     set1 = set1*set2;
     cout<<set1<<endl;
 
+    cout<<(set1!=set2)<<endl;
+
+    set3 = set1 + set2;
+    cout<<set3<<endl;
+
+    set2-=4;
+    cout<<set2<<endl;
+
 
     
-
+    return 0;
 }
