@@ -17,23 +17,18 @@ bool IntSet::operator== (IntSet& d2){
     }
     return 1;
 }
-
 bool IntSet::operator!= (IntSet& d2){
     return !(*this==d2);
 }
-
 bool IntSet::operator > (IntSet& d2){
     return this->set.size()>d2.set.size();
 }
-
 bool IntSet::operator < (IntSet& d2){
     return this->set.size()<d2.set.size();
 }
-
 bool IntSet::operator >= (IntSet& d2){
     return this->set.size()>=d2.set.size();
 }
-
 bool IntSet::operator <= (IntSet& d2){
     return this->set.size()<=d2.set.size();
 }
@@ -106,17 +101,3 @@ ostream& operator<< (ostream& os, const IntSet& set) {
     os<<"}"<<endl;
     return os;
 }
-
-
-
-
-// istream& operator >>(istream& is, Date& d) {
-//     is >> d.days;
-//     return is;
-// }
-
-// void IntSet::pushBack(int n){
-//     if (find(set.begin(), set.end(), n)==set.end())
-//         this->set.push_back(n);
-// }
-
