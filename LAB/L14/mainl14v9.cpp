@@ -21,16 +21,14 @@ int main(){
     Goose sadGoose(3, "Sergei");
     Penguin sadPenguin(13, "Yulia");
     Ostrich sadOstrich(0, "Denis");
-    Ostrich sadPediator(176, "Anna");
     sadFarm.addAnimal(&sadGoose);
     sadFarm.addAnimal(&sadPenguin);
     sadFarm.addAnimal(&sadOstrich);
-    sadFarm.addAnimal(&sadPediator);
 
 
     sadFarm.showAnimals();
-    // sadFarm.paintAnimals();
-    // sadFarm.showAnimals();
+    sadFarm.paintAnimals();
+    sadFarm.showAnimals();
 
     sadFarm.delAnimal(1);
     cout<<endl;

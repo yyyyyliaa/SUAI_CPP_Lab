@@ -152,8 +152,14 @@ int modmath::get() {
  return num;
 }
 
+RGB::RGB(){
+  p_red = 0;
+  p_green = 0;
+  p_blue = 0;
+}
+
 RGB::RGB(int red, int green, int blue){
-    setRGB(red, green, blue);
+  setRGB(red, green, blue);
 }
 
 void RGB::getRGB(int red, int green, int blue){

@@ -102,9 +102,10 @@ int main() {
 
    RGB color1(10, 200, 0);
    RGB color2(30, 89, 78);
+   RGB color3;
 
-   color1.printRGB();
-   color1 = color1 + color2;
-   color1.printRGB();
+   color3.printRGB();
+   color3 = color1 + color2;
+   color3.printRGB();
 
 }
