@@ -16,6 +16,7 @@ int main(){
     set1+=1;
     set1+=2;
     set1+=4;
+    set1+=-10;
 
     set2+=2;
     set2+=4;
@@ -30,22 +31,7 @@ int main(){
     compare(set1, set2, compQuan);
     cout<<"Compare summa:";
     compare(set1, set2, compSum);
-
-    // set3=set1+set2;
-    // cout<<set3<<endl;
-
-    // set1 = set1*set2;
-    // cout<<set1<<endl;
-
-    // cout<<(set1!=set2)<<endl;
-
-    // set3 = set1 + set2;
-    // cout<<set3<<endl;
-
-    // set2-=4;
-    // cout<<set2<<endl;
-
-
+    cout<<endl;
     
     return 0;
 }

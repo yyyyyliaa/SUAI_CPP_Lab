@@ -111,11 +111,3 @@ Penguin::Penguin(size_t age, std::string name, std::string bodyColor, int id){
     if (bodyColor=="null") this->bodyColor = COLORS[rand()%COLORS.size()];
     else this->bodyColor = bodyColor;
 }
-
-
-// id:
-// name:
-// age:
-// paw color:
-// wing color:
-// body color:

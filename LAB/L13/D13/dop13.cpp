@@ -12,8 +12,8 @@ using namespace std;
 
 void compare(IntSet& d, IntSet& d1, int (*f)(IntSet& , IntSet&)){
     if (f(d, d1)==1) cout<<"set1==set2"<<endl;
-    else if (f(d, d1)==2) cout<<"set1>set2"<<endl;
-    else if (f(d, d1)==3) cout<<"set1<set1"<<endl;
+    else if (f(d, d1)==2) cout<<"set1<set2"<<endl;
+    else if (f(d, d1)==3) cout<<"set1>set2"<<endl;
     else if (f(d, d1)==0) cout<<"set1!=set2"<<endl;
     else cout<<"set1!=set2"<<endl;
 }

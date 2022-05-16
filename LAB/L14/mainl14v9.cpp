@@ -18,21 +18,31 @@ using namespace std;
 
 int main(){
     Farm sadFarm;
+
     Goose sadGoose(3, "Sergei");
+    Goose happyGoose(0, "Denis");
     Penguin sadPenguin(13, "Yulia");
-    Ostrich sadOstrich(0, "Denis");
+    Penguin happyPenguin(19, "Nastya");
+    Ostrich sadOstrich(5, "Katya");
+    Goose funGoose(4, "Lera");
+
+
     sadFarm.addAnimal(&sadGoose);
     sadFarm.addAnimal(&sadPenguin);
     sadFarm.addAnimal(&sadOstrich);
+    sadFarm.addAnimal(&happyGoose);
+    sadFarm.addAnimal(&happyPenguin);
+    sadFarm.addAnimal(&funGoose);
 
 
-    sadFarm.showAnimals();
+    // sadFarm.showAnimals();
     sadFarm.paintAnimals();
     sadFarm.showAnimals();
 
-    sadFarm.delAnimal(1);
-    cout<<endl;
-    sadFarm.showAnimals();
+    // sadFarm.delAnimal(1);
+    // cout<<endl;
+    // sadFarm.showAnimals();
 
 
 }
+//добавить "склад" гусь-1 страус-10 функция пополнить и забрать, функция покормить всех животных
