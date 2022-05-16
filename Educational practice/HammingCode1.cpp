@@ -25,26 +25,24 @@ int main() {
 
   do{
     zero = -1;
-    for(int i = 0; i<size; i++){
+    for(int i = CodeBook[M]; i<size; i++){
       if (mark[i]==0){
         zero = i;
         break;
       }
     }
     if (zero!=-1){
-    //printf("%d",zero);  
-    CodeBook[M] = zero;
-    mark[zero] = 2; // Отметим взятое слово в массиве пометок.
-    M++;
-    // Шаг 2. \отметим все слова в кандатах на расстоянии меньше d от выбранного.
-    for(int i = CodeBook[M]; i< size;i++){
-    if(mark[i] == 0 && (count_ones(i^CodeBook[M-1])<D)){
-    mark[i] = 1;
+      CodeBook[M] = zero;
+      mark[zero] = 2; // Отметим взятое слово в массиве пометок.
+      M++;
+      for(int i = CodeBook[M-1]; i< size; i++){
+        if(mark[i] == 0 && (count_ones(i^CodeBook[M-1])<D)){
+          mark[i] = 1;
+        }
+      printf("%d ", mark[i]);
+      }
+      cout<<endl;
     }
-    printf("%d ", mark[i]);
-    }
-    cout<<endl;
-  }
   }while(zero!=-1);
    
    

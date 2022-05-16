@@ -27,29 +27,56 @@ int w(int b){
     return w;
 }
 
+void bin(long unsigned int k, long unsigned int size)
+{
+    long unsigned int i;
+ 
+ 
+    for(i=0; i<8*size; i++) {
+        int c = (k&1);
+        printf("%d", c);
+        k = (k>>1);
+    }
+}
+
+void printBin(unsigned int n, int bit){
+    for (int i = bit-1; i>-1; i--){
+        printf("%d", (n>>i)&1);
+    }
+}
+
 int main(){
     int e = 0xB;
-    int m = 2;
+    int m = 1;
     int a = koder(m);
     printf("Vector a: %d\n", a);
     printf("Vector e: %d\n", e);
     int b = kanal(a, e);
     printf("Vector b: %d\n", b);
 
-    int min = 5;
-    int result;
-    int tmp;
+    // int min = 5;
+    // int result;
+    // int tmp;
 
-    for (int i = 0; i<4; i++){
-        int r = b^kniga[i];
-        result = w(r);
-        if (result<min){
-          min =result;  
-          tmp = i;
-        } 
-    }
-    printf("d = %d\n", min);
-    printf("Result: %d", kniga[tmp]);
+    // for (int i = 0; i<4; i++){
+    //     int r = b^kniga[i];
+    //     result = w(r);
+    //     if (result<min){
+    //       min =result;  
+    //       tmp = i;
+    //     } 
+    // }
+    // printf("d = %d\n", min);
+    // printf("Result: %d", kniga[tmp]);
+
+    // bin(10, 3);
+
+    printf("m =");
+    printBin(m, 2);
+    printf("e = ");
+    printBin(e, 2);
+    
+
 
     return 0;
 
