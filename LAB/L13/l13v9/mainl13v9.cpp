@@ -9,34 +9,35 @@ using namespace std;
 int main(){
     IntSet set1, set2, set3;
 
-    set1+=1;
+    set2+=1;
     set2+=2;
     set2+=4;
 
-    cout<<set1<<endl;
-    cout<<set2<<endl;
+
+    cout<<"set1: "<<set1<<endl;
+    cout<<"set2: "<<set2<<endl;
 
     set3=set1+set2;
-    cout<<set3<<endl;
+    cout<<"set1+set2="<<set3<<endl;
 
     set1 = set1*set2;
-    cout<<set1<<endl;
+    cout<<"set1*set2="<<set1<<endl;
 
-    cout<<(set1!=set2)<<endl;
+    cout<<"set1!=set2 "<<(set1!=set2)<<endl;
 
-    set3 = set1 + set2;
-    cout<<set3<<endl;
+    // set3 = set1 + set2;
+    // cout<<"set1+set2="<<set3<<endl;
 
     set2-=4;
-    cout<<set2<<endl;
+    cout<<"set2-4="<<set2<<endl;
 
     set3 = set1-set2;
-    cout<<set3<<endl;
+    cout<<"set1-set2="<<set3<<endl;
 
-    cout<<(set1>set2)<<endl;
-    cout<<(set1>set2)<<endl;
-    cout<<(set1>=set2)<<endl;
-    cout<<(set1<=set2)<<endl;
+    cout<<"set1>set2 "<<(set1>set2)<<endl;
+    cout<<"set1<set2 "<<(set1<set2)<<endl;
+    cout<<"set1>=set2 "<<(set1>=set2)<<endl;
+    cout<<"set1<=set2 "<<(set1<=set2)<<endl;
 
 
     
