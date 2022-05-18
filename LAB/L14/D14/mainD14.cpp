@@ -17,16 +17,16 @@
 using namespace std;
 
 int main(){
-    Farm sadFarm;
+    Farm sadFarm(150);
 
-    Goose sadGoose(3);
-    Goose happyGoose(0);
+    Goose sadGoose(3, "Sergei");
+    // Goose happyGoose(0);
     Penguin sadPenguin(13, "Yulia");
-    Penguin happyPenguin(19, "Nastya");
-    Ostrich sadOstrich(5, "Katya", "Red", "White");
-    Goose funGoose(4, "Lera");
+    // Penguin happyPenguin(19, "Nastya");
+    Ostrich sadOstrich(5, "Katya");
+    // Goose funGoose(4, "Lera");
 
-
+    
     sadFarm.addAnimal(&sadGoose);
     sadFarm.addAnimal(&sadPenguin);
     sadFarm.addAnimal(&sadOstrich);
@@ -34,14 +34,24 @@ int main(){
     // sadFarm.addAnimal(&happyPenguin);
     // sadFarm.addAnimal(&funGoose);
 
+    sadFarm.showAnimals();
 
+    cout<<"Food: "<<sadFarm.getFood()<<endl;
+    sadFarm.feedAnimals();
+    cout<<"Food: "<<sadFarm.getFood()<<endl;
+
+    sadFarm.restockFood(200);
+    cout<<"Food: "<<sadFarm.getFood()<<endl;
+
+    sadFarm.feedAnimals();
+    cout<<"Food: "<<sadFarm.getFood()<<endl;
+
+    // sadFarm.paintAnimals();
     // sadFarm.showAnimals();
-    sadFarm.paintAnimals();
-    sadFarm.showAnimals();
 
-    sadFarm.delAnimal(0);
-    cout<<"Farm after del 0 animal"<<endl;
-    sadFarm.showAnimals();
+    // sadFarm.delAnimal(0);
+    // cout<<"Farm after del 0 animal"<<endl;
+    // sadFarm.showAnimals();
 
 
 }

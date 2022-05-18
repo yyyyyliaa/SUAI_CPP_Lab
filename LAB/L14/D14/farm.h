@@ -23,6 +23,7 @@ protected:
     int id;
     std::string name;
     size_t age;
+    int consumption;
 
 public:
     void setId(int id);
@@ -39,6 +40,8 @@ public:
     void baseShow();
 
     virtual void paint() = 0;
+
+    virtual int feed(int food) = 0;
 };
 
 class Farm{
@@ -46,8 +49,13 @@ class Farm{
 private:
 
     std::vector <Animal*> animals;
+    int food;
 
 public:
+
+    Farm(int food);
+
+    Farm();
 
     void addAnimal(Animal* x);
 
@@ -56,6 +64,16 @@ public:
     void delAnimal(int x);
 
     void showAnimals();
+
+    void feedAnimals();
+
+    void setFood(int food);
+
+    int getFood();
+
+    void restockFood(int x);
+
+    void takeFood(int x);
 
 };
 class Goose: public Animal{
@@ -68,11 +86,13 @@ private:
 
 public:
 
-    Goose(size_t age = 0, std::string name = "", std::string pawColor = "null", std::string wingColor = "null", std::string bodyColor = "null", int id = -1);
+    Goose(size_t age = 0, std::string name = "", int consumption = 0, std::string pawColor = "null", std::string wingColor = "null", std::string bodyColor = "null", int id = -1);
 
     void show() override;
 
     void paint() override;
+
+    int feed(int food) override;
 
 };
 
@@ -84,11 +104,13 @@ private:
 
 public:
 
-    Penguin(size_t age = 0, std::string name = "", std::string bodyColor = "null", int id = -1);
+    Penguin(size_t age = 0, std::string name = "", int consumption = 0, std::string bodyColor = "null", int id = -1);
 
     void show() override;
 
     void paint() override;
+
+    int feed(int food) override;
 
 };
 
@@ -101,11 +123,13 @@ private:
 
 public:
 
-    Ostrich(size_t age = 0, std::string name = "", std::string pawColor = "null", std::string wingColor = "null", int id = -1);
+    Ostrich(size_t age = 0, std::string name = "", int consumption = 0, std::string pawColor = "null", std::string wingColor = "null", int id = -1);
 
     void show() override;
 
     void paint() override;
+
+    int feed(int food) override;
 
 };
 

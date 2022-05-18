@@ -4,7 +4,35 @@
 
 using namespace std;
 
+//ANIMAL
+int Animal::getId(){
+    return this->id;
+}
 
+void Animal::baseShow(){
+    cout<<"consumption: "<<consumption<<endl;
+    cout<< "id: "<< id<<endl;
+    cout<< "name: "<<name<<endl;
+    cout<< "age: "<< age<< endl;
+}
+
+void Animal::genId(){
+    static int globalId = 0;
+    id = globalId;
+    globalId++;
+}
+
+//FARM
+Farm::Farm(int food){
+    this->food = food;
+}
+
+void Farm::feedAnimals(){
+    for (int i = 0; i< animals.size(); i++){
+        int tmp = animals[i]->feed(this->food);
+        this->takeFood(tmp);
+    }
+}
 
 void Farm::addAnimal(Animal* x){
     animals.push_back(x);
@@ -23,39 +51,53 @@ void Farm::paintAnimals(){
     }
 }
 
-int Animal::getId(){
-    return this->id;
-}
-
-
 void Farm::delAnimal(int x){
     for (int i = 0; i< animals.size(); i++){
         if (animals[i]->getId()==x) animals.erase(animals.begin()+i);
     }
 }
 
-void Animal::baseShow(){
-    cout<< "id: "<< id<<endl;
-    cout<< "name: "<<name<<endl;
-    cout<< "age: "<< age<< endl;
+void Farm::setFood(int food){
+    this->food = food;
+}
+
+int Farm::getFood(){
+    return this->food;
+}
+
+void Farm::restockFood(int x){
+    this->food+=x;
+}
+
+void Farm::takeFood(int x){
+    if (this->food>x) this->food-=x;
+    else std::cout<<"Not enough food"<<endl;
+}
+//GOOSE
+Goose::Goose(size_t age, std::string name, int consumption, std::string pawColor, std::string wingColor, std::string bodyColor, int id){
+    if (id==-1) genId();
+    else this->id = id;
+    this->age = age;
+    this->name = name;
+    if (pawColor=="null") this->pawColor = COLORS[rand()%COLORS.size()];
+    else this->pawColor = pawColor;
+
+    if (wingColor=="null") this->wingColor = COLORS[rand()%COLORS.size()];
+    else this->wingColor = wingColor;
+
+    if (bodyColor=="null") this->bodyColor = COLORS[rand()%COLORS.size()];
+    else this->bodyColor = bodyColor;
+
+    if (consumption==0) this->consumption = 10;
+    else this->consumption = consumption;
 }
 
 void Goose::show(){
+    cout<<"type: Goose"<<endl;
     baseShow();
     cout<< "paw color: "<< pawColor<< endl;
     cout<< "wing color: "<< wingColor<< endl;
     cout<< "body color: "<< bodyColor<<endl;
-}
-
-void Penguin::show(){
-    baseShow();
-    cout<< "body color: "<< bodyColor<<endl;
-}
-
-void Ostrich::show(){
-    baseShow();
-    cout<< "paw color: "<< pawColor<< endl;
-    cout<< "wing color: "<< wingColor<< endl;
 
 }
 
@@ -65,52 +107,105 @@ void Goose::paint(){
     bodyColor = COLORS[rand()%COLORS.size()];
 }
 
+//PENGUIN
+Penguin::Penguin(size_t age, std::string name, int consumption, std::string bodyColor, int id){
+    if (id==-1) genId();
+    else this->id = id;
+    this->age = age;
+    this->name = name;
+
+    if (bodyColor=="null") this->bodyColor = COLORS[rand()%COLORS.size()];
+    else this->bodyColor = bodyColor;
+
+    if (consumption==0) this->consumption = 50;
+    else this->consumption = consumption;
+}
+
+void Penguin::show(){
+    cout<<"type: Penguin"<<endl;
+    baseShow();
+    cout<< "body color: "<< bodyColor<<endl;
+}
+
 void Penguin::paint(){
     bodyColor = "Black";
+}
+
+//OSTRICH
+Ostrich::Ostrich(size_t age, std::string name, int consumption, std::string pawColor, std::string wingColor, int id){
+    if (id==-1) genId();
+    else this->id = id;
+
+    this->age = age;
+    this->name = name;
+
+    if (pawColor=="null") this->pawColor = COLORS[rand()%COLORS.size()];
+    else this->pawColor = pawColor;
+
+    if (wingColor=="null") this->wingColor = COLORS[rand()%COLORS.size()];
+    else this->wingColor = wingColor;
+
+    if (consumption==0) this->consumption = 100;
+    else this->consumption = consumption;
+}
+
+void Ostrich::show(){
+    cout<<"type: Ostrich"<<endl;
+    baseShow();
+    cout<< "paw color: "<< pawColor<< endl;
+    cout<< "wing color: "<< wingColor<< endl;
+
 }
 
 void Ostrich::paint(){
     pawColor = wingColor;
 }
 
-void Animal::genId(){
-    static int globalId = 0;
-    id = globalId;
-    globalId++;
+
+
+int Goose::feed(int food){
+    //int tmp = farm.getFood();
+    if ((food-=this->consumption)>0)
+       return this->consumption;
+
+    else {
+        std::cout<<"Not enough food for an animal with ID "<<this->id<<endl;
+        return 0;
+    }
 }
 
-Ostrich::Ostrich(size_t age, std::string name, std::string pawColor, std::string wingColor, int id){
-    if (id==-1) genId();
-    else this->id = id;
-    this->age = age;
-    this->name = name;
-    if (pawColor=="null") this->pawColor = COLORS[rand()%COLORS.size()];
-    else this->pawColor = pawColor;
-    if (wingColor=="null") this->wingColor = COLORS[rand()%COLORS.size()];
-    else this->wingColor = wingColor;
+int Penguin::feed(int food){
+    //int tmp = farm.getFood();
+    if ((food-=this->consumption)>0)
+       return this->consumption;
+
+    else {
+        std::cout<<"Not enough food for an animal with ID "<<this->id<<endl;
+        return 0;
+    }
 }
 
-Goose::Goose(size_t age, std::string name, std::string pawColor, std::string wingColor, std::string bodyColor, int id){
-    if (id==-1) genId();
-    else this->id = id;
-    this->age = age;
-    this->name = name;
-    if (pawColor=="null") this->pawColor = COLORS[rand()%COLORS.size()];
-    else this->pawColor = pawColor;
+int Ostrich::feed(int food){
+    //int tmp = farm.getFood();
+    if ((food-=this->consumption)>0)
+       return this->consumption;
 
-    if (wingColor=="null") this->wingColor = COLORS[rand()%COLORS.size()];
-    else this->wingColor = wingColor;
-
-    if (bodyColor=="null") this->bodyColor = COLORS[rand()%COLORS.size()];
-    else this->bodyColor = bodyColor;
+    else {
+        std::cout<<"Not enough food for an animal with ID "<<this->id<<endl;
+        return 0;
+    }
 }
 
-Penguin::Penguin(size_t age, std::string name, std::string bodyColor, int id){
-    if (id==-1) genId();
-    else this->id = id;
-    this->age = age;
-    this->name = name;
 
-    if (bodyColor=="null") this->bodyColor = COLORS[rand()%COLORS.size()];
-    else this->bodyColor = bodyColor;
-}
+
+
+
+
+
+
+
+
+
+
+
+
