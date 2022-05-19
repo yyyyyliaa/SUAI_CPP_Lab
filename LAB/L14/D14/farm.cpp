@@ -71,7 +71,7 @@ void Farm::restockFood(int x){
 
 void Farm::takeFood(int x){
     if (this->food>x) this->food-=x;
-    else std::cout<<"Not enough food"<<endl;
+    else cout<<"Not enough food"<<endl;
 }
 //GOOSE
 Goose::Goose(size_t age, std::string name, int consumption, std::string pawColor, std::string wingColor, std::string bodyColor, int id){
@@ -89,6 +89,7 @@ Goose::Goose(size_t age, std::string name, int consumption, std::string pawColor
     else this->bodyColor = bodyColor;
 
     if (consumption==0) this->consumption = 10;
+    else if (consumption<0) this->consumption = consumption*(-1);
     else this->consumption = consumption;
 }
 
@@ -118,6 +119,7 @@ Penguin::Penguin(size_t age, std::string name, int consumption, std::string body
     else this->bodyColor = bodyColor;
 
     if (consumption==0) this->consumption = 50;
+    else if (consumption<0) this->consumption = consumption*(-1);
     else this->consumption = consumption;
 }
 
@@ -146,6 +148,7 @@ Ostrich::Ostrich(size_t age, std::string name, int consumption, std::string pawC
     else this->wingColor = wingColor;
 
     if (consumption==0) this->consumption = 100;
+    else if (consumption<0) this->consumption = consumption*(-1);
     else this->consumption = consumption;
 }
 
@@ -164,34 +167,31 @@ void Ostrich::paint(){
 
 
 int Goose::feed(int food){
-    //int tmp = farm.getFood();
     if ((food-=this->consumption)>0)
        return this->consumption;
 
     else {
-        std::cout<<"Not enough food for an animal with ID "<<this->id<<endl;
+        cout<<"Not enough food for an animal with ID "<<this->id<<endl;
         return 0;
     }
 }
 
 int Penguin::feed(int food){
-    //int tmp = farm.getFood();
     if ((food-=this->consumption)>0)
        return this->consumption;
 
     else {
-        std::cout<<"Not enough food for an animal with ID "<<this->id<<endl;
+        cout<<"Not enough food for an animal with ID "<<this->id<<endl;
         return 0;
     }
 }
 
 int Ostrich::feed(int food){
-    //int tmp = farm.getFood();
     if ((food-=this->consumption)>0)
        return this->consumption;
 
     else {
-        std::cout<<"Not enough food for an animal with ID "<<this->id<<endl;
+        cout<<"Not enough food for an animal with ID "<<this->id<<endl;
         return 0;
     }
 }

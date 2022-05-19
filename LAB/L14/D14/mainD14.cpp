@@ -19,7 +19,7 @@ using namespace std;
 int main(){
     Farm sadFarm(150);
 
-    Goose sadGoose(3, "Sergei");
+    Goose sadGoose(3, "Sergei", 15);
     // Goose happyGoose(0);
     Penguin sadPenguin(13, "Yulia");
     // Penguin happyPenguin(19, "Nastya");

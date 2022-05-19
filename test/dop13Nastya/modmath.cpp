@@ -175,10 +175,11 @@ void RGB::setRGB(int red, int green, int blue){
 }
 
 RGB RGB::operator+(RGB& other){
-    this->p_red = (this->p_red + other.p_red)%255;
-    this->p_green = (this->p_green+other.p_green)%255;
-    this->p_blue = (this->p_blue+other.p_blue)%255;
-    return *this;
+    RGB tmp;
+    tmp.p_red = (this->p_red + other.p_red)%255;
+    tmp.p_green = (this->p_green+other.p_green)%255;
+    tmp.p_blue = (this->p_blue+other.p_blue)%255;
+    return tmp;
 }
 
 void RGB::printRGB(){
