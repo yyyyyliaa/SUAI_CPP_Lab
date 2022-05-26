@@ -10,7 +10,7 @@ class IntSet {
 
 private:
 
-    int p_size;
+    int p_size = 0;
 
     int* p_set;
 

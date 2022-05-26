@@ -16,12 +16,12 @@ int main(void){
     
     printf("Enter the size of the array: ");
     int size;
-    scanf_s("%d", &size);
+    scanf("%d", &size);
 
     while (size <= 0){
         printf("The number must be greater than zero\n");
         printf("Enter the size of the array: ");
-        scanf_s("%d", &size);
+        scanf("%d", &size);
     }
 
     int* array = (int*)malloc(sizeof(int)*size);
@@ -29,7 +29,7 @@ int main(void){
 
     printf("What element index do you want to know? ");
     int x;
-    scanf_s("%d", &x);
+    scanf("%d", &x);
 
     startTimeSort = (long double)time(NULL);
     mySort(array, size); 
