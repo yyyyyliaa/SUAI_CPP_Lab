@@ -2,7 +2,7 @@
 //        m      a      b        m^
 //источник->кодер->канал->декодер->
 
-int kniga[4] = {0x00, 0x0D, 0x16, 0x1B};
+int kniga[] = {0x00, 0x0D, 0x16, 0x1B};
 
 int koder(int m){
     return kniga[m];
@@ -12,6 +12,7 @@ int kanal(int a, int e){
     int b = a^e;
     return b;
 }
+
 /* 0000->0x00
 01101->0xD
 10110->0x16
@@ -45,37 +46,34 @@ void printBin(unsigned int n, int bit){
     }
 }
 
+int decoder(int a){
+    int array[4] = {0};
+    for (int i = 0; i < 4; i++) 
+        array[i] = kniga[i] ^ a;
+
+    int min = array[0];
+    int minIndex = 0;
+    for (int i = 0; i < 4; i++) {
+        if (array[i] < min) {
+            min = array[i];
+            minIndex = i;
+        }
+    }
+    return minIndex;
+}
+
 int main(){
-    int e = 0xB;
-    int m = 1;
-    int a = koder(m);
-    printf("Vector a: %d\n", a);
-    printf("Vector e: %d\n", e);
-    int b = kanal(a, e);
-    printf("Vector b: %d\n", b);
-
-    // int min = 5;
-    // int result;
-    // int tmp;
-
-    // for (int i = 0; i<4; i++){
-    //     int r = b^kniga[i];
-    //     result = w(r);
-    //     if (result<min){
-    //       min =result;  
-    //       tmp = i;
-    //     } 
-    // }
-    // printf("d = %d\n", min);
-    // printf("Result: %d", kniga[tmp]);
-
-    // bin(10, 3);
-
-    printf("m =");
-    printBin(m, 2);
-    printf("e = ");
-    printBin(e, 2);
+    int m = 1; //вход кодера
+    int a = koder(m); // выход кодера
+    int e = 0x0;
+    int b = kanal(a, e); // выход канала
+    int m_out = decoder(b); // выход декодера
     
+    printf("m = %d\n", m);
+    printf("a = %d\n", a);
+    printf("e = %d\n", e);
+    printf("b = %d\n", b);
+    printf("m_out = %d\n", m_out);
 
 
     return 0;
