@@ -22,6 +22,8 @@ int main(){
 
     IntSet set1(set, size);
 
+    IntSet* mass = (IntSet*)malloc(sizeof(IntSet)*1);
+
     cout<<"Enter size of set2: ";
     cin>>size;
 
