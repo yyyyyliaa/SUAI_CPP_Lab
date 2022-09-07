@@ -11,6 +11,7 @@ private:
 public:
     set();
     set(const set& s);
+    set& operator=(const set& s);
     void insert(const T& value);
     void erase(const T& value);
     bool find(const T& value);
@@ -72,6 +73,16 @@ size_t set<T>::size(){
     return p_size;
 }
 
+// template <class T>
+// set<T>& set<T>::operator=(const set& s) {
+//     if (&s == this) return *this;
+//     delete[] arr;
+//     p_size = s.p_size;
+//     arr = (T*)malloc(sizeof(T)*p_size);
+//     for (size_t i = 0; i < p_size; i++)
+//        arr[i] = s.arr;
+// }
+
 bool operator<(const std::string& s1, const std::string& s2) {
     int size = s1.size() - s2.size();
     if (size != 0) return size<0;
@@ -100,7 +111,7 @@ template <class T>
 void set<T>::insert(const T& value) {
 
     if (p_size == 0) {
-        this->arr = (T*)malloc(sizeof(T)*1);
+        arr = (T*)malloc(sizeof(T)*1);
         arr[0] = value;
         p_size++;
     }
@@ -119,7 +130,7 @@ void set<T>::insert(const T& value) {
             T* arr2 = (T*)malloc(sizeof(T)*(p_size+1));
             int tmp = 0;
             for (size_t i = 0; i < p_size; i++){
-                if (arr[i]<value && arr[i+1]>value){
+                if ((arr[i]<value && p_size==1)||(arr[i]<value && arr[i+1]>value)){
                     tmp = i;
                 }
             }

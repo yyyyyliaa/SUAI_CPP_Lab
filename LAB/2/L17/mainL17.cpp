@@ -13,37 +13,40 @@
 using namespace std;
 
 int main(){
-    set<int> set1;
-    set1.insert(1);
-    set1.insert(6);
-    set1.insert(3);
-    set1.insert(1);
-    set1.insert(2);
+    // set<int> set1;
+    // set1.insert(1);
+    // set1.insert(6);
+    // set1.insert(3);
+    // set1.insert(1);
+    // set1.insert(2);
 
-    cout<<set1<<endl;
+    // cout<<set1<<endl;
 
-    set1.erase(1);
+    // set1.erase(1);
 
-    cout<<set1<<endl;
+    // cout<<set1<<endl;
 
-    cout << set1.find(4) << endl;
-    cout << set1.find(1) << endl;
+    // cout << set1.find(4) << endl;
+    // cout << set1.find(1) << endl;
+    // cout << set1.find(2) << endl;
 
     set<std::string> set2;
-    set2.insert("AAA");
-    set2.insert("BBB");
-    set2.insert("CCCC");
-    set2.insert("AAA");
+    set2.insert("Hello");
+    set2.insert("world");
+    set2.insert("Hello");
+    set2.insert("Hell");
+    set2.insert("world");
+    set2.insert("worl");
 
     cout<<set2<<endl;
 
-    set<int> set3;
-    try{
-        set3.erase(1);
-    }
-    catch (MyException& e) {
-        std::cout << e.get(); 
-    }
+    // set<int> set3;
+    // try{
+    //     set3.erase(1);
+    // }
+    // catch (MyException& e) {
+    //     std::cout << e.get(); 
+    // }
 
     return 0;
 }
