@@ -148,7 +148,31 @@ bool set<T>::find(const T& value){
 
 template <class T>
 void set<T>::erase(const T& value){
-    
+    if (p_size == 0) throw MyException("The set is empty");
+    else{
+        size_t tmp = 0;
+        int flag = 0;
+        
+        for (size_t i = 0; i<p_size; i++){
+            if (arr[i]==value){
+                flag  = 1;
+                tmp = i;
+                break;
+            }
+        }
+        if (flag == 1){
+            T* arr2 = (T*)malloc(sizeof(T)*(p_size-1));
+            for (size_t i = 0; i<tmp; i++){
+                arr2[i] = arr[i];
+            }
+            for(size_t i = tmp+1; i<p_size; i++){
+                arr2[i-1] = arr[i];
+            }
+            arr = arr2;
+            p_size--;
+        }
+    }
+
 }
 
 template <class T>

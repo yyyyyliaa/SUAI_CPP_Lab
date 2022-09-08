@@ -22,7 +22,7 @@ int main(){
 
     cout<<set1<<endl;
 
-    // set1.erase(1);
+    set1.erase(1);
 
     cout<<set1<<endl;
 
@@ -40,13 +40,13 @@ int main(){
 
     cout<<set2<<endl;
 
-    // set<int> set3;
-    // try{
-    //     set3.erase(1);
-    // }
-    // catch (MyException& e) {
-    //     std::cout << e.get(); 
-    // }
+    set<int> set3;
+    try{
+        set3.erase(1);
+    }
+    catch (MyException& e) {
+        std::cout << e.get(); 
+    }
 
     return 0;
 }
