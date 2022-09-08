@@ -11,12 +11,12 @@ private:
 public:
     set();
     set(const set& s);
-    set& operator=(const set& s);
+    // set& operator=(const set& s);
     void insert(const T& value);
-    void erase(const T& value);
-    bool find(const T& value);
-    size_t size();
-    void clear();
+    // void erase(const T& value);
+    // bool find(const T& value);
+    // size_t size();
+    // void clear();
     ~set();
 
     template<class T1>
@@ -25,31 +25,9 @@ public:
 
 };
 
-class MyException {
-private:
-    std::string p_message;
-public:
-    MyException(const std::string& m);
-    std::string get();
-};
- 
-std::string MyException::get(){
-    return p_message;
-}
-
-MyException::MyException(const std::string& m){
-    p_message = m;
-}
-
 template <class T> 
 set<T>::set() {
     arr = NULL;
-    p_size = 0;
-}
-
-template <class T> 
-void set<T>::clear(){
-    free(arr);
     p_size = 0;
 }
 
@@ -68,27 +46,12 @@ set<T>::~set(){
     p_size = 0;
 }
 
-template <class T>
-size_t set<T>::size(){
-    return p_size;
+bool operator<(const std::string& s1, const std::string& s2) {
+    return s1.compare(s2)<0;
 }
 
-template <class T>
-set<T>& set<T>::operator=(const set& s) {
-    if (&s == this) return *this;
-    delete[] arr;
-    p_size = s.p_size;
-    arr = (T*)malloc(sizeof(T)*p_size);
-    for (size_t i = 0; i < p_size; i++)
-      arr[i] = s.arr;
-}
-
-bool operator<(const std::string &s1, const std::string &s2) {
-  return s1.compare(s2) < 0;
-}
-
-bool operator>(const std::string &s1, const std::string &s2) {
-  return s1.compare(s2) > 0;
+bool operator>(const std::string& s1, const std::string& s2) {
+    return s1.compare(s2)>0;
 }
 
 template <class T>
@@ -137,21 +100,6 @@ void set<T>::insert(const T& value) {
 }
 
 template <class T>
-bool set<T>::find(const T& value){
-    for (size_t i = 0; i< p_size; i++){
-        if (arr[i]==value){
-            return true;
-        }
-    }
-    return false;
-}
-
-template <class T>
-void set<T>::erase(const T& value){
-    
-}
-
-template <class T>
 std::ostream& operator<<(std::ostream& os, const set<T>& s){
     os << "{";
     for (size_t i = 0; i < s.p_size; i++)
@@ -159,3 +107,4 @@ std::ostream& operator<<(std::ostream& os, const set<T>& s){
     os << "}";
     return os;
 }
+

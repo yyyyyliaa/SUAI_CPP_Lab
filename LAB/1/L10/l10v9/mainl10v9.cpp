@@ -6,7 +6,6 @@
 #include <iostream>
 #include "l10v9.h"
 #include <string.h>
-#include <malloc.h>
 #include <stdlib.h>
 using namespace std;
 
