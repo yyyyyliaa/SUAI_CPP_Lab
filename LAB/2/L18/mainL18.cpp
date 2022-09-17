@@ -15,6 +15,7 @@ int main(){
     derevo.addRoot("Yulia");
     derevo.addNode("Yulia", "Veronika");
     derevo.addRoot("Anya"); //вЕРОНИКА ПРОПАЛА
+    derevo.addNode("Anya", "Katya");
     cout<<derevo;
 
     return 0;

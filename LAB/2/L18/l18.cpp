@@ -4,7 +4,7 @@ using namespace std;
 
 void Tree::addNode(const std::string& parent,  const std::string& nodeName){
     if (nodes.find(parent)!=nodes.end()) {
-        std::cout<<"loh"<<std::endl; //
+        std::cout<<"loh"<<std::endl; //Вероника нашлась
         return;
     }
     nodes[parent].childs.push_back(nodeName); 
