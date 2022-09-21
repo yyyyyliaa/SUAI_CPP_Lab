@@ -4,7 +4,6 @@ using namespace std;
 
 void Tree::addNode(const std::string& parent,  const std::string& nodeName){
     map<std::string, Node> :: iterator it;
-    int flag = 0;
     for(it = nodes.begin(); it!=nodes.end(); it++){
         if (it->first==nodeName) return;
         else{
