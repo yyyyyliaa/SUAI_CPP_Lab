@@ -14,8 +14,12 @@ int main(){
     Tree derevo;
     derevo.addRoot("Yulia");
     derevo.addNode("Yulia", "Veronika");
+    derevo.addNode("Yulia", "Katya");
+    derevo.addNode("Yulia", "Nastya");
+    derevo.addNode("Yulia", "Nastya");
     derevo.addRoot("Anya");
-    derevo.addNode("Anya", "Katya");
+    derevo.addNode("Veronika", "Katya");
+    
     cout<<derevo;
 
     return 0;
