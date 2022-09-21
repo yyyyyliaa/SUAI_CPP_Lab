@@ -6,7 +6,7 @@
 
 #include "lab18.h"
 #include <string>
-#include <iostream> //бля хуй 
+#include <iostream> 
 
 using namespace std;
 
@@ -14,7 +14,7 @@ int main(){
     Tree derevo;
     derevo.addRoot("Yulia");
     derevo.addNode("Yulia", "Veronika");
-    derevo.addRoot("Anya"); //вЕРОНИКА ПРОПАЛА
+    derevo.addRoot("Anya");
     derevo.addNode("Anya", "Katya");
     cout<<derevo;
 
