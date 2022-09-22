@@ -13,8 +13,12 @@ void Tree::addNode(const std::string& parent,  const std::string& nodeName){
         }
     }
     
-
+    
     nodes[parent].childs.push_back(nodeName); 
+}
+
+size_t Tree::getSize(){
+    return this->nodes.size();
 }
 
 void Tree::addRoot(const std::string& rootName){
@@ -36,5 +40,15 @@ ostream& operator<<(ostream& os, Tree& t){
         cout<<endl;
     }
     cout<<endl;
+   
+
     return os;
+}
+
+void Tree::print(string cur, string tab) {
+    cout << tab << cur << endl;;
+    for (int i = 0; i < this->nodes[cur].childs.size(); i++) {
+            string newTab = tab + "    ";
+            print(nodes[cur].childs[i], newTab);
+    }
 }
