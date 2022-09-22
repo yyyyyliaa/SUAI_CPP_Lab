@@ -5,6 +5,8 @@
     set union(const set& s) --- объединение (бросает исключение при объединении с пустым множеством)
     operator<< для вывода*/
 
+
+
 #pragma once
 
 #include <string>
