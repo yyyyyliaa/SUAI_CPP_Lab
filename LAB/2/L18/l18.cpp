@@ -13,8 +13,7 @@ void Tree::addNode(const std::string& parent,  const std::string& nodeName){
         }
     }
     
-    
-    // if (nodes.find(parent)!=nodes.end()) return;
+
     nodes[parent].childs.push_back(nodeName); 
 }
 
