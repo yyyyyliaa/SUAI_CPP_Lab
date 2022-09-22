@@ -118,7 +118,7 @@ void set<T>::insert(const T& value) {
     }
 
     else {
-        int flag = 0;
+        int flag = 0;  
 
         for (size_t i = 0; i < this->p_size; i++){
             if(value == this->arr[i]){
@@ -161,9 +161,9 @@ std::ostream& operator<<(std::ostream& os, const set<T>& s){
 
 template <class T>
 void set<T>::unit(const set& s){
-    if (s.p_size==0){
+    if (s.p_size==0)
         throw MyException("The set is empty!!!");
-    }
+    
     for (size_t i = 0; i<s.p_size; i++){ 
         if(this->find(s.arr[i])==false)
             this->insert(s.arr[i]);
