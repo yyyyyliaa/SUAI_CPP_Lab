@@ -12,7 +12,7 @@
 
 using namespace std;
 
-int main(){
+void doWrite(){
     set<int> set1;
     set1.insert(1);
     set1.insert(6);
@@ -20,16 +20,16 @@ int main(){
     set1.insert(1);
     set1.insert(2);
 
-    cout<<"set1: ";
-    cout<<set1<<endl;
+    set1.saveToFile("f.json");
+}
 
-    cout<<"set1 size: ";
-    cout<<set1.size()<<endl;
+void doRead(){
+    set<int> set1;
+    set1.loadFromFile("f.json");
+    cout<<set1;
+}
 
-    cout << set1.find(4) << endl;
-    cout << set1.find(1) << endl;
-    cout << set1.find(2) << endl;
-
+void doWrite1(){
     set<std::string> set2;
     set2.insert("AAA");
     set2.insert("BBBB");
@@ -38,30 +38,83 @@ int main(){
     set2.insert("CCCC");
     set2.insert("C");
 
-    cout<<"set2: ";
-    cout<<set2<<endl;
+    set2.saveToFile("f.json");
+}
 
-    set<int> set3;
-    try{
-        set1.unit(set3);
-    }
-    catch (MyException& e) {
-        std::cout << e.get(); 
-    }
+void doRead1(){
+    set<std::string> set2;
+    set2.loadFromFile("f.json");
+    cout<<set2;
+}
 
-    cout<<endl;
+void doWritePoint(){
+    set<point> set3;
+    set3.insert({1, 2, 3});
+    set3.insert({1, 5, 3});
+    set3.insert({9, 2, 7});
+    set3.insert({8, 2, 8});
 
-    set3.insert(5);
-    set3.insert(1);
-    set3.insert(11);
-    set3.insert(6);
+    set3.saveToFile("f.json");
+}
 
-    cout<<"set3: ";
-    cout<<set3<<endl;
+void doReadPoint(){
+    set<point> set3;
+    set3.loadFromFile("f.json");
+    cout<<set3;
+}
 
-    set1.unit(set3);
-    cout<<"set1 after unit with set3: ";
-    cout<<set1<<endl;
+int main(){
+    //doWrite();
+    //doRead();
+
+    //doWrite1();
+    //doRead1();
+
+    //doWritePoint();
+    //doReadPoint();
+
+
+
+
+    // cout<<"set1: ";
+    // cout<<set1<<endl;
+
+    // cout<<"set1 size: ";
+    // cout<<set1.size()<<endl;
+
+    // cout << set1.find(4) << endl;
+    // cout << set1.find(1) << endl;
+    // cout << set1.find(2) << endl;
+
+    
+
+    // cout<<"set2: ";
+    // cout<<set2<<endl;
+
+    // set<int> set3;
+    // try{
+    //     set1.unit(set3);
+    // }
+    // catch (MyException& e) {
+    //     std::cout << e.get(); 
+    // }
+
+    // cout<<endl;
+
+    // set3.insert(5);
+    // set3.insert(1);
+    // set3.insert(11);
+    // set3.insert(6);
+
+    // cout<<"set3: ";
+    // cout<<set3<<endl;
+
+    // set1.unit(set3);
+    // cout<<"set1 after unit with set3: ";
+    // cout<<set1<<endl;
+
+
+
 
     return 0;
 }

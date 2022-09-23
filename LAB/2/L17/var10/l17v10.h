@@ -9,8 +9,13 @@
 
 #pragma once
 
-#include <string>
 #include <iostream>
+#include <ostream>
+#include <fstream>
+using namespace std;
+#include "json.hpp"
+using json = nlohmann::json;
+
 
 template <class T> class set{
 
@@ -26,6 +31,8 @@ public:
     bool find(const T& value);
     size_t size();
     ~set();
+    void saveToFile(const std::string& fileName);
+    void loadFromFile(const std::string& fileName);
 
     template<class T1>
     friend std::ostream& operator <<(std::ostream& os, const set<T1>& s);
@@ -33,6 +40,55 @@ public:
 
 };
 
+
+struct point {
+    int x;
+    int y;
+    int z;
+
+    friend ostream& operator<<(ostream& os, const point& p) {
+        os << "( " << p.x << " " << p.y << " " << p.z << ")";
+        return os;
+    }
+
+};
+
+bool operator==(const point& lhs, const point& rhs) {
+    return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
+}
+
+bool operator>(const point& lhs, const point& rhs) {
+    return (lhs.x*lhs.x+lhs.y*lhs.y+lhs.z*lhs.z) == (rhs.x*rhs.x+rhs.y*rhs.y+rhs.z*rhs.z);
+}
+
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(point, x, y, z)
+
+template <class T>
+void set<T>::saveToFile(const std::string& fileName){
+    std::ofstream file(fileName);
+    json o;
+    o["count"] = p_size;
+    for (size_t i = 0; i < p_size; i++)
+        o["content"].push_back(arr[i]);
+
+    file << o;
+    file.close();
+}
+
+template <class T>
+void set<T>::loadFromFile(const std::string& fileName) {
+    std::ifstream file(fileName);
+    json j;
+    file >> j;
+    p_size = j["count"];
+    arr = (T*)malloc(sizeof(T)*p_size);
+    for (size_t i = 0; i < p_size; i++)
+    {
+        arr[i] = j["content"][i];
+    }
+
+    file.close();
+}
 
 class MyException {
 private:
@@ -170,5 +226,5 @@ void set<T>::unit(const set& s){
         if(this->find(s.arr[i])==false)
             this->insert(s.arr[i]);
     }
-    
 }
+
