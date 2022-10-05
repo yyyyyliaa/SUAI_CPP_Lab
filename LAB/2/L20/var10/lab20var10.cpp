@@ -21,13 +21,6 @@ void Graph::dfs (int cur, string& tab) {
     }
 }
 
-// void Tree::print(string cur, string tab) {
-//     cout << tab << cur << endl;;
-//     for (int i = 0; i < this->nodes[cur].childs.size(); i++) {
-//             string newTab = tab + "    ";
-//             print(nodes[cur].childs[i], newTab);
-//     }
-// }
 
 Graph::Graph(int ver){
     root = ver;

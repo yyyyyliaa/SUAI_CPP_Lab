@@ -8,11 +8,11 @@
 //считать множество из файла
 
 #include "l17v10.h"
-#include <iostream>
+// #include <iostream>
 
 using namespace std;
 
-void doWrite(){
+void doWriteInt(){
     set<int> set1;
     set1.insert(1);
     set1.insert(6);
@@ -23,13 +23,13 @@ void doWrite(){
     set1.saveToFile("f.json");
 }
 
-void doRead(){
+void doReadInt(){
     set<int> set1;
     set1.loadFromFile("f.json");
     cout<<set1;
 }
 
-void doWrite1(){
+void doWriteString(){
     set<std::string> set2;
     set2.insert("AAA");
     set2.insert("BBBB");
@@ -41,7 +41,7 @@ void doWrite1(){
     set2.saveToFile("f.json");
 }
 
-void doRead1(){
+void doReadString(){
     set<std::string> set2;
     set2.loadFromFile("f.json");
     cout<<set2;
@@ -64,55 +64,14 @@ void doReadPoint(){
 }
 
 int main(){
-    //doWrite();
-    //doRead();
+    // doWriteInt();
+    // doReadInt();
 
-    //doWrite1();
-    //doRead1();
+    // doWriteString();
+    // doReadString();
 
-    //doWritePoint();
-    //doReadPoint();
-
-
-
-
-    // cout<<"set1: ";
-    // cout<<set1<<endl;
-
-    // cout<<"set1 size: ";
-    // cout<<set1.size()<<endl;
-
-    // cout << set1.find(4) << endl;
-    // cout << set1.find(1) << endl;
-    // cout << set1.find(2) << endl;
-
-    
-
-    // cout<<"set2: ";
-    // cout<<set2<<endl;
-
-    // set<int> set3;
-    // try{
-    //     set1.unit(set3);
-    // }
-    // catch (MyException& e) {
-    //     std::cout << e.get(); 
-    // }
-
-    // cout<<endl;
-
-    // set3.insert(5);
-    // set3.insert(1);
-    // set3.insert(11);
-    // set3.insert(6);
-
-    // cout<<"set3: ";
-    // cout<<set3<<endl;
-
-    // set1.unit(set3);
-    // cout<<"set1 after unit with set3: ";
-    // cout<<set1<<endl;
-
+    // doWritePoint();
+    // doReadPoint();
 
 
 
