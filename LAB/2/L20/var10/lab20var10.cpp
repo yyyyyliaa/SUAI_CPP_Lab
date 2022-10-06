@@ -44,10 +44,6 @@ void Graph::loadFromFile(const std::string& fileName){
             matrix[i].push_back(j["data"][i][k]);
         }
     }
-
-
-
-
     file.close();
 }
 

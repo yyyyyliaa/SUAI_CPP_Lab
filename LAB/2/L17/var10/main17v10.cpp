@@ -70,8 +70,8 @@ int main(){
     // doWriteString();
     // doReadString();
 
-    // doWritePoint();
-    // doReadPoint();
+    doWritePoint();
+    doReadPoint();
 
 
 
