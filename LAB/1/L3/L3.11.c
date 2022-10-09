@@ -11,7 +11,7 @@ float maximum(float* array) {
 
 int main() {
     float array[N];
-    for (int i = 0; i < N; i++) scanf_s("%f", &array[i]);
+    for (int i = 0; i < N; i++) scanf("%f", &array[i]);
     float max = maximum(array);
     printf("%f", max);
     return 0;
