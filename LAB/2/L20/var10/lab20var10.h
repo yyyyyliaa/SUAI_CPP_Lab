@@ -5,6 +5,7 @@
 #pragma once
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <map>
 #include <vector>
@@ -18,10 +19,12 @@ private:
     std::vector<int> visited;
 
 public:
+    std::vector <std::vector<int> > paths;
     Graph();
-    Graph(int v);
     void dfs(int cur, std::string& tab);
+    void dfsPaint(int cur, std::string& tab, std::vector<int> history);
     void loadFromFile(const std::string& fileName);
     int getRoot();
+    void saveToDot(std::string file);
 
 };

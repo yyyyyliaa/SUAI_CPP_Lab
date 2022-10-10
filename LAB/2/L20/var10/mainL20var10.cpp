@@ -12,9 +12,10 @@ using namespace std;
 
 int main(){
     Graph g;
-    g.loadFromFile("loh.json");
+    g.loadFromFile("loh2.json");
     string tab = "->";
-    g.dfs(g.getRoot(),tab);
+    g.dfsPaint(g.getRoot(),tab, {});
+    g.saveToDot("loh.dot");
     
 
     return 0;

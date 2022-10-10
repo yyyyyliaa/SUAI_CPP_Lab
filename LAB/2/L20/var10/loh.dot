@@ -1,0 +1,8 @@
+digraph G {
+
+4 -> 1 [color = "coral"];
+4 -> 1 -> 2 [color = "black"];
+4 -> 1 -> 2 -> 7 [color = "red"];
+4 -> 1 -> 6 [color = "pink"];
+
+}
