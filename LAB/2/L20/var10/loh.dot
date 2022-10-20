@@ -1,8 +1,7 @@
 digraph G {
 
-4 -> 1 [color = "purple"];
-4 -> 1 -> 2 [color = "red"];
-4 -> 1 -> 2 -> 7 [color = "#00bce3"];
-4 -> 1 -> 6 [color = "black"];
+1 -> 2 [color = "pink"];
+1 -> 2 -> 7 [color = "purple"];
+1 -> 6 [color = "orange"];
 
 }
