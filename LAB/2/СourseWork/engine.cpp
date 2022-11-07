@@ -1,7 +1,9 @@
 
 #include "engine.hpp"
+
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -59,4 +61,16 @@ size_t engine::searchPattern(string text, string pattern){
     }
 
     return count;
+}
+
+string fromFileToString(string path){
+    string text;
+    ifstream in(path);
+    if (in.is_open()){
+        while (!in.eof()){
+            getline(in, text, '\0');
+        }
+    }
+    in.close();
+    return text;
 }

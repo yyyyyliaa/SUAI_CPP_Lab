@@ -8,25 +8,14 @@ using namespace std;
 
 int main(){
 
-    string pattern = "He said";
-    string text;
-    string tmp;
+    string pattern;
+    cout<<"Enter search pattern: ";
+    cin>>pattern;
 
-    ifstream in("text.txt");
-    if (in.is_open()){
-        while (!in.eof()){
-            getline(in, text, '\0');
-            // text+=tmp;
-        }
-        // while(in){
-        //     in>>tmp;
-        //     text+=tmp;
-        // }
-    }
-    in.close();
+    string text = fromFileToString("text.txt");
 
     engine karp;
-    // cout<<karp.getHash(pattern)<<endl;
+   
     cout<<karp.searchPattern(text, pattern)<<endl;
 
 }
