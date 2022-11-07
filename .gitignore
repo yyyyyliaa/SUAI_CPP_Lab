@@ -1,3 +1,5 @@
 .vscode/
 compile/
 .DS_Store
+*.txt
+test/
