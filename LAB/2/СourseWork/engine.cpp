@@ -13,18 +13,15 @@ void engine::setB(int b){
 }
 
 bool engine::check(std:: string& text, std::string& pattern, int startIndex){
-    // if((text.size()-startIndex)!=pattern.size()) return false;
-    
     for(int i = 0; i<pattern.size(); i++){
         if(text[startIndex+i]!=pattern[i]) 
             return false;
     }
-
-    return true;
+    if(text[startIndex+pattern.size()]==' ') return true;
+    else return false;
 }
 
 size_t engine::getHash(string text, size_t len){
-    // size_t len = text.size();
     size_t result = 0;
     for(int i = 0; i<len; i++){
         result = (B*result+text[i])%Q;
@@ -51,7 +48,25 @@ size_t engine::searchPattern(string text, string pattern){
     for(int i = 0; i<lenText-lenPattern+1; i++){
         if ((patternHash == textHash)&&(check(text, pattern, i))){ 
             count++;
+            size_t countSpace = 10;
+            size_t tmp = i;
+            while(countSpace!=0){
+                if(text[tmp] != ' ') tmp++;
+                else {
+                    countSpace--;
+                    tmp++;
+                }
+                
+            }
             cout << "Pattern is found at position: " << i  << endl;
+            cout<<"...";
+            for(size_t j = i; j!=tmp; j++){
+                cout<<text[j];
+            }
+            cout<<"..."<<endl;
+            cout<<endl;
+            
+            
         }
         if(i<lenText-lenPattern){
             textHash = ((textHash-text[i]*multiplier)*B+text[i+lenPattern])%Q;
@@ -59,6 +74,7 @@ size_t engine::searchPattern(string text, string pattern){
             if(textHash<0) textHash+=Q;
         }
     }
+    cout<<"Found pattern:";
 
     return count;
 }
