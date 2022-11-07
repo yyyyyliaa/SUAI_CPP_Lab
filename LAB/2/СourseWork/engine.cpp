@@ -1,8 +1,6 @@
 
 #include "engine.hpp"
 
-#include <iostream>
-#include <string>
 #include <fstream>
 
 using namespace std;
@@ -48,15 +46,14 @@ size_t engine::searchPattern(string text, string pattern){
     for(int i = 0; i<lenText-lenPattern+1; i++){
         if ((patternHash == textHash)&&(check(text, pattern, i))){ 
             count++;
-            size_t countSpace = 10;
+            size_t countSpaces = 10;
             size_t tmp = i;
-            while(countSpace!=0){
+            while(countSpaces!=0){
                 if(text[tmp] != ' ') tmp++;
                 else {
-                    countSpace--;
+                    countSpaces--;
                     tmp++;
                 }
-                
             }
             cout << "Pattern is found at position: " << i  << endl;
             cout<<"...";
@@ -65,17 +62,13 @@ size_t engine::searchPattern(string text, string pattern){
             }
             cout<<"..."<<endl;
             cout<<endl;
-            
-            
         }
         if(i<lenText-lenPattern){
             textHash = ((textHash-text[i]*multiplier)*B+text[i+lenPattern])%Q;
-
             if(textHash<0) textHash+=Q;
         }
     }
     cout<<"Found pattern:";
-
     return count;
 }
 
