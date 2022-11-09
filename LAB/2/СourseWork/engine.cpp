@@ -15,7 +15,7 @@ bool engine::check(std:: string& text, std::string& pattern, int startIndex){
         if(text[startIndex+i]!=pattern[i]) 
             return false;
     }
-    if(text[startIndex+pattern.size()]==' ') return true;
+    if(text[startIndex+pattern.size()]==' ' || text[startIndex+pattern.size()]=='\n') return true;
     else return false;
 }
 
