@@ -84,3 +84,7 @@ std::ostream& operator<<(std::ostream& os, LfuCashe& c){
 
 	return os;
 }
+
+
+
+
