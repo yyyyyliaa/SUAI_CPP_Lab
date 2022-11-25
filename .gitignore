@@ -2,4 +2,4 @@
 compile/
 .DS_Store
 *.txt
-# test/
+test/
