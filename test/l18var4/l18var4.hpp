@@ -8,9 +8,10 @@
 class LfuCashe{
     private:
         size_t size;
-        size_t count;
-        size_t min;
+        size_t count = 0;
+
         std::map <std::string, int> cashe;
+        std::multimap<int, std::string> search;
 
     public:
         LfuCashe(size_t size);
@@ -18,7 +19,7 @@ class LfuCashe{
         bool find_and_add(const std::string &adress);
         bool find(const std::string &address);
 
-        int findMin();
+        std::string findMin();
 	    int getMin();
 
         std::map<std::string, int>::iterator find_value(const int value);

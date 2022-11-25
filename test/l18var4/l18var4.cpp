@@ -23,19 +23,19 @@ map <string, int>::iterator LfuCashe::find_value(const int value){
     return cashe.end();
 }
 
-int LfuCashe::findMin(){
-	map<string, int>::iterator it;
-	it = cashe.begin();
-	int min = it->second;
-	while (it!=cashe.end()) {
-		if (min > (*it).second) min = (*it).second;
+string LfuCashe::findMin(){
+	multimap<int, string>::iterator it;
+	it = search.begin();
+	int minKey = it->first;
+	string min = it->second;
+	while (it!=search.end()) {
+		if (minKey > (*it).first) {
+			minKey = (*it).first;
+			min = (*it).second;
+		}
 		it++;
 	}
     return min;
-}
-
-int LfuCashe::getMin(){
-	return min;
 }
 
 bool LfuCashe::find_and_add(const string &address){
@@ -43,21 +43,32 @@ bool LfuCashe::find_and_add(const string &address){
 	if (result == cashe.end()){
 		if (count < size){
 			cashe.insert (pair<string,int>(address, 1));
-			min = 1;
+			search.insert(pair<int, string>(1, address));
 			count++;
 		}
 		else {
-			auto res = find_value(min);
+			auto res = findMin();
+			search.erase(cashe[res]);
 			cashe.erase(res);
+			
 
-			cashe.insert (pair<string,int>(address, 1));			
+			cashe.insert(pair<string,int>(address, 1));	
+			search.insert(pair<int, string>(1, address));		
 		}
 		return false;
 	}
 	else{
 		cashe[address] += 1;
-		int value = cashe[address];
-		min = findMin();
+		multimap<int, string>::iterator it;
+		it = search.begin();
+		while (it!=search.end()) {
+			if ((*it).second == address) {
+				int tmp = (*it).first + 1;
+				search.erase(it);
+				search.insert(pair<int, string>(tmp, address));
+			}
+			it++;
+		}
 	}
 	return true;	
 }
@@ -67,8 +78,19 @@ bool LfuCashe::find(const string &address) {
 	
 	if (result != cashe.end()){
 		cashe[address] += 1;
+
+		multimap<int, string>::iterator it;
+		it = search.begin();
+		while (it!=search.end()) {
+			if ((*it).second == address) {
+				int tmp = (*it).first + 1;
+				search.erase(it);
+				search.insert(pair<int, string>(tmp, address));
+			}
+			it++;
+		}
+		
 		int value = cashe[address];
-		min = findMin();
 		return true;
 	}
 	else return false;
