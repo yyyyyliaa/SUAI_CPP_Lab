@@ -1,16 +1,16 @@
-
-#include "engine.hpp"
+#include "RabinKarpAlgorithm.hpp"
 
 #include <fstream>
 
 using namespace std;
 
 
-void engine::setB(int b){
+RabinKarpAlgorithm::RabinKarpAlgorithm(int b, int q){
     B = b;
+    Q = q;
 }
 
-bool engine::check(std:: string& text, std::string& pattern, int startIndex){
+bool RabinKarpAlgorithm::check(std:: string& text, std::string& pattern, int startIndex){
     for(int i = 0; i<pattern.size(); i++){
         if(text[startIndex+i]!=pattern[i]) 
             return false;
@@ -19,7 +19,7 @@ bool engine::check(std:: string& text, std::string& pattern, int startIndex){
     else return false;
 }
 
-size_t engine::getHash(string text, size_t len){
+size_t RabinKarpAlgorithm::getHash(string text, size_t len){
     size_t result = 0;
     for(int i = 0; i<len; i++){
         result = (B*result+text[i])%Q;
@@ -27,7 +27,7 @@ size_t engine::getHash(string text, size_t len){
     return result;
 }
 
-size_t engine::searchPattern(string text, string pattern){
+size_t RabinKarpAlgorithm::searchPattern(string text, string pattern){
     size_t lenText = text.size();
     size_t lenPattern = pattern.size();
 

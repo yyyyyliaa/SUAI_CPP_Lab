@@ -1,4 +1,4 @@
-#include "engine.hpp"
+#include "RabinKarpAlgorithm.hpp"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ int main(){
 
     string text = fromFileToString("text.txt");
 
-    engine karp;
+    RabinKarpAlgorithm karp(13, 256);
    
     cout<<karp.searchPattern(text, pattern)<<endl;
 

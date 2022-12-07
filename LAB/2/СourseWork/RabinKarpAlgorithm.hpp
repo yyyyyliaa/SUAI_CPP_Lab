@@ -3,12 +3,16 @@
 #include <iostream>
 #include <string>
 
-class engine{
+// #define Q 256
+// #define B 13
+
+
+class RabinKarpAlgorithm{
 private:
-    int Q = 256;
-    int B = 9;
+    int Q;
+    int B;
 public:
-    void setB(int B);
+    RabinKarpAlgorithm(int b, int q);
     bool check(std:: string& text, std::string& pattern, int startIndex);
     size_t getHash(std::string text, size_t len);
     size_t searchPattern(std::string text, std::string pattern);
