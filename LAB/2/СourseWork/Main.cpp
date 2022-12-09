@@ -1,13 +1,20 @@
 #include "RabinKarpAlgorithm.hpp"
 
+#define Q 1e9 + 7
+#define B 256
+
 using namespace std;
 
 int main(int argc, char const *argv[]){
-    string text = fromFileToString("text.txt");
 
-    RabinKarpAlgorithm karp(13, 256);
+    string filePath = argv[1];
+    string text = fromFileToString(filePath);
 
-    string pattern = argv[1];
+    RabinKarpAlgorithm karp(B, Q);
+
+    cout<<"Enter search pattern: ";
+    string pattern;
+    cin>>pattern;
    
     cout<<karp.searchPattern(text, pattern)<<endl;
     
